@@ -1,0 +1,2 @@
+﻿https://localhost:7160/home/getculture?code=de
+
