@@ -1,4 +1,5 @@
 ﻿using LocalizationApp.Models;
+using LocalizationApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using System.Diagnostics;
@@ -18,6 +19,19 @@ namespace LocalizationApp.Controllers
             ViewData["Title"] = _localizer["Header"];
             ViewData["Message"] = _localizer["Message"];
             return View();
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(ProductViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                return Content("модель добавлена");
+            }
+            return View(model);
         }
     }
 }

@@ -1,0 +1,28 @@
+﻿@model LocalizationApp.ViewModels.ProductViewModel
+ 
+<form asp-antiforgery="true" asp-action="Create" asp-controller="Home">
+    <div>
+        <div class="validation" asp-validation-summary="All"></div>
+        <div>
+ 
+            <label asp-for="Name"></label><br />
+            <input type="text" asp-for="Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+ 
+        <div>
+            <label asp-for="Price"></label><br />
+            <input asp-for="Price" />
+            <span asp-validation-for="Price"></span>
+        </div>
+        <div>
+            <input type="submit" value="Save" />
+        </div>
+    </div>
+</form>
+ 
+@section scripts{
+ 
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
