@@ -1,2 +1,17 @@
 ﻿https://localhost:7160/home/getculture?code=de
 
+http://localhost:5000/?culture=en-US&ui-culture=en-US
+
+c=%LANGCODE%|uic=%LANGCODE%
+
+c=de-DE|uic=de-DE
+
+1. QueryStringRequestCultureProvider
+2. CookieRequestCultureProvider
+3. AcceptLanguageHeaderRequestCultureProvider
+
+public string GetCulture()
+{
+    return $"CurrentCulture:{CultureInfo.CurrentCulture.Name}, CurrentUICulture:{CultureInfo.CurrentUICulture.Name}";
+}
+
