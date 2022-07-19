@@ -1,0 +1,14 @@
+﻿<data name="Header" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+	<data name="Message" xml:space="preserve">
+    <value>Hello World</value>
+  </data>
+
+[www_root]/Views/Home/Index.[culture_code].resx
+
+[www_root]/Views.Home.Index.[culture_code].resx
+
+
+https://localhost:7279/?culture=de
+
