@@ -1,0 +1,12 @@
+﻿https://localhost:7157/home/getculture
+CurrentCulture:en-US, CurrentUICulture:en-US
+
+https://localhost:7157/home/getculture?code=de
+CurrentCulture:de, CurrentUICulture:de
+
+https://localhost:7157/home/getculture?lang=eng
+CurrentCulture:en-US, CurrentUICulture:en-US
+
+//this also works
+https://localhost:7157/?lang=eng
+

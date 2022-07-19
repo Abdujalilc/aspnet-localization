@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using System.Globalization;
 using System.Threading.Tasks;
 
-namespace LocalizationApp
+namespace CultureIdentify
 {
     public class CultureMiddleware
     {

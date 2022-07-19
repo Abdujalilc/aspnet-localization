@@ -1,5 +1,4 @@
-﻿using LocalizationApp.Models;
-using LocalizationApp.ViewModels;
+﻿using LocalizationApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using System.Diagnostics;

@@ -15,3 +15,5 @@ public string GetCulture()
     return $"CurrentCulture:{CultureInfo.CurrentCulture.Name}, CurrentUICulture:{CultureInfo.CurrentUICulture.Name}";
 }
 
+https://localhost:7160/home/create
+
