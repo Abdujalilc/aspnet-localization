@@ -1,0 +1,9 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+
+@model Object
+
+<h3>@Model.ToString()</h3>
+<h3>@SharedLocalizer["Message"]</h3>

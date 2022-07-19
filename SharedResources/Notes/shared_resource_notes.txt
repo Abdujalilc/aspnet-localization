@@ -1,0 +1,12 @@
+﻿<data name="Header" xml:space="preserve">
+    <value>Привет</value>
+  </data>
+	<data name="Message" xml:space="preserve">
+    <value>Добро пожаловать</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+	<data name="Price" xml:space="preserve">
+    <value>Цена</value>
+  </data>
