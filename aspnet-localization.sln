@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CultureIdentify", "CultureIdentify\CultureIdentify.csproj", "{979FBBFE-AE1C-4435-B4A3-294233AD2680}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_CultureIdentify", "CultureIdentify\01_CultureIdentify.csproj", "{979FBBFE-AE1C-4435-B4A3-294233AD2680}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttributeLocalization", "AttributeLocalization\AttributeLocalization.csproj", "{47B58706-0802-4B1A-92E7-00E517A0FD4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringLocalizer", "StringLocalizer\StringLocalizer.csproj", "{7979B901-C20E-4BC3-8AB0-A5EF49B355C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_StringLocalizer", "StringLocalizer\02_StringLocalizer.csproj", "{7979B901-C20E-4BC3-8AB0-A5EF49B355C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalizationResources", "LocalizationResources\LocalizationResources.csproj", "{603CE595-70D7-4028-9C29-EBABFA2A6B69}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_LocalizationResources", "LocalizationResources\03_LocalizationResources.csproj", "{603CE595-70D7-4028-9C29-EBABFA2A6B69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
