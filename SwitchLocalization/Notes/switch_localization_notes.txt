@@ -1,0 +1,2 @@
+﻿c=%LANGCODE%|uic=%LANGCODE%
+Response.Cookies.Append(".AspNetCore.Culture", "c=ru|uic=ru");

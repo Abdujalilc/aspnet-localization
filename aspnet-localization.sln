@@ -5,13 +5,15 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_CultureIdentify", "CultureIdentify\01_CultureIdentify.csproj", "{979FBBFE-AE1C-4435-B4A3-294233AD2680}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttributeLocalization", "AttributeLocalization\AttributeLocalization.csproj", "{47B58706-0802-4B1A-92E7-00E517A0FD4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05_AttributeLocalization", "AttributeLocalization\05_AttributeLocalization.csproj", "{47B58706-0802-4B1A-92E7-00E517A0FD4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_StringLocalizer", "StringLocalizer\02_StringLocalizer.csproj", "{7979B901-C20E-4BC3-8AB0-A5EF49B355C6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_LocalizationResources", "LocalizationResources\03_LocalizationResources.csproj", "{603CE595-70D7-4028-9C29-EBABFA2A6B69}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_ViewLocalization", "ViewLocalization\04_ViewLocalization.csproj", "{898F84CC-D44D-4734-B44C-6D4B53F75F02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchLocalization", "SwitchLocalization\SwitchLocalization.csproj", "{535242EE-57D2-4914-BDDE-CC72CFCE2161}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{898F84CC-D44D-4734-B44C-6D4B53F75F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{898F84CC-D44D-4734-B44C-6D4B53F75F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{898F84CC-D44D-4734-B44C-6D4B53F75F02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{535242EE-57D2-4914-BDDE-CC72CFCE2161}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{535242EE-57D2-4914-BDDE-CC72CFCE2161}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{535242EE-57D2-4914-BDDE-CC72CFCE2161}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{535242EE-57D2-4914-BDDE-CC72CFCE2161}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
