@@ -1,0 +1,6 @@
+﻿<data name="Header" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+	<data name="Message" xml:space="preserve">
+    <value>Hello World</value>
+  </data>
