@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04_ViewLocalization", "View
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06_SwitchLocalization", "SwitchLocalization\06_SwitchLocalization.csproj", "{535242EE-57D2-4914-BDDE-CC72CFCE2161}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedResources", "SharedResources\SharedResources.csproj", "{2BC34CDD-6801-4BB5-9E61-35B3C5D75332}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_SharedResources", "SharedResources\07_SharedResources.csproj", "{2BC34CDD-6801-4BB5-9E61-35B3C5D75332}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09_EFLocalizationApp", "EFLocalizationApp\09_EFLocalizationApp.csproj", "{FD2A4628-36E7-46A0-A705-E2A13F6963E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{2BC34CDD-6801-4BB5-9E61-35B3C5D75332}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BC34CDD-6801-4BB5-9E61-35B3C5D75332}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BC34CDD-6801-4BB5-9E61-35B3C5D75332}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD2A4628-36E7-46A0-A705-E2A13F6963E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD2A4628-36E7-46A0-A705-E2A13F6963E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD2A4628-36E7-46A0-A705-E2A13F6963E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD2A4628-36E7-46A0-A705-E2A13F6963E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
