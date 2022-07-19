@@ -1,4 +1,6 @@
-﻿<data name="Header" xml:space="preserve">
+﻿https://metanit.com/sharp/aspnet5/28.8.php
+
+<data name="Header" xml:space="preserve">
     <value>Привет</value>
   </data>
 	<data name="Message" xml:space="preserve">

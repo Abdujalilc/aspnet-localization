@@ -1,4 +1,7 @@
-﻿https://localhost:7160/home/getculture?code=de
+﻿https://metanit.com/sharp/aspnet5/28.6.php
+
+
+https://localhost:7160/home/getculture?code=de
 
 http://localhost:5000/?culture=en-US&ui-culture=en-US
 

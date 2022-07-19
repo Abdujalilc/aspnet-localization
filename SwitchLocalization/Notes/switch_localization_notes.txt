@@ -1,2 +1,5 @@
 ﻿c=%LANGCODE%|uic=%LANGCODE%
 Response.Cookies.Append(".AspNetCore.Culture", "c=ru|uic=ru");
+
+
+https://metanit.com/sharp/aspnet5/28.7.php

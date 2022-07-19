@@ -1,2 +1,5 @@
-﻿https://localhost:7236/?culture=ru
+﻿https://metanit.com/sharp/aspnet5/28.3.php
+
+
+https://localhost:7236/?culture=ru
 
