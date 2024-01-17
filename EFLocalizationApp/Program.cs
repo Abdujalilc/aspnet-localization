@@ -7,11 +7,11 @@ using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-string connection = "Server=(localdb)\\mssqllocaldb;Database=localizationdb;Trusted_Connection=True;";
-builder.Services.AddDbContext<LocalizationContext>(options => options.UseSqlServer(connection));
+string? con_string = "Data Source=AppData\\LocalizationDB.db";
+builder.Services.AddSqlite<LocalizationContext>(con_string);
 
 builder.Services.AddTransient<IStringLocalizer, EFStringLocalizer>();
-builder.Services.AddSingleton<IStringLocalizerFactory>(new EFStringLocalizerFactory(connection));
+builder.Services.AddSingleton<IStringLocalizerFactory>(new EFStringLocalizerFactory(con_string));
 builder.Services.AddControllersWithViews().AddDataAnnotationsLocalization(options => {
     options.DataAnnotationLocalizerProvider = (type, factory) =>
     factory.Create(null);

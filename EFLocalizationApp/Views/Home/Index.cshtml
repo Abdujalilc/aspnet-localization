@@ -1,6 +1,15 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
- 
+@model string 
 @inject IViewLocalizer Localizer
+
+<form method="post" action="/home/SetLanguage">
+    <select name="culture" asp-for="@Model">
+        <option value="en">English</option>
+        <option value="ru">Russian</option>
+        <option value="de">German</option>
+    </select>
+    <input type="submit" value="Change Culture" />
+    <h1>@Localizer["Header"]</h1>
+    <h3>@Localizer["Message"]</h3>
+</form>
  
-<h1>@Localizer["Header"]</h1>
-<h3>@Localizer["Message"]</h3>
