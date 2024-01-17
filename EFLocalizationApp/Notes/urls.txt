@@ -1,0 +1,3 @@
+﻿https://localhost:7083/home/getculture
+
+https://localhost:7083/home/SetLanguage?culture=ru&returnUrl=index
