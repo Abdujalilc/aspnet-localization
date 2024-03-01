@@ -1,13 +1,10 @@
 ﻿using EFLocalizationApp.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Localization;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 
 namespace EFLocalizationApp
 {
-    public class EFStringLocalizer : IStringLocalizer
+    public class EFStringLocalizer : Microsoft.Extensions.Localization.IStringLocalizer
     {
         private readonly LocalizationContext _db;
 
@@ -16,37 +13,37 @@ namespace EFLocalizationApp
             _db = db;
         }
 
-        public LocalizedString this[string name]
+        public Microsoft.Extensions.Localization.LocalizedString this[string name]
         {
             get
             {
                 var value = GetString(name);
-                return new LocalizedString(name, value ?? name, resourceNotFound: value == null);
+                return new Microsoft.Extensions.Localization.LocalizedString(name, value ?? name, resourceNotFound: value == null);
             }
         }
 
-        public LocalizedString this[string name, params object[] arguments]
+        public Microsoft.Extensions.Localization.LocalizedString this[string name, params object[] arguments]
         {
             get
             {
                 var format = GetString(name);
                 var value = string.Format(format ?? name, arguments);
-                return new LocalizedString(name, value, resourceNotFound: format == null);
+                return new Microsoft.Extensions.Localization.LocalizedString(name, value, resourceNotFound: format == null);
             }
         }
 
-        public IStringLocalizer WithCulture(CultureInfo culture)
+        public Microsoft.Extensions.Localization.IStringLocalizer WithCulture(CultureInfo culture)
         {
             CultureInfo.DefaultThreadCurrentCulture = culture;
             return new EFStringLocalizer(_db);
         }
 
-        public IEnumerable<LocalizedString> GetAllStrings(bool includeAncestorCultures)
+        public IEnumerable<Microsoft.Extensions.Localization.LocalizedString> GetAllStrings(bool includeAncestorCultures)
         {
             return _db.Resources
                 .Include(r => r.Culture)
                 .Where(r => r.Culture.Name == CultureInfo.CurrentCulture.Name)
-                .Select(r => new LocalizedString(r.Key, r.Value));
+                .Select(r => new Microsoft.Extensions.Localization.LocalizedString(r.Key, r.Value));
         }
 
         private string GetString(string name)

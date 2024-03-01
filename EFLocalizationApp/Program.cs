@@ -1,7 +1,6 @@
 using EFLocalizationApp;
 using EFLocalizationApp.Models;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using System.Globalization;
 
@@ -11,6 +10,7 @@ string? con_string = "Data Source=AppData\\LocalizationDB.db";
 builder.Services.AddSqlite<LocalizationContext>(con_string);
 
 builder.Services.AddTransient<IStringLocalizer, EFStringLocalizer>();
+//this factory initialize DB from ListObject
 builder.Services.AddSingleton<IStringLocalizerFactory>(new EFStringLocalizerFactory(con_string));
 builder.Services.AddControllersWithViews().AddDataAnnotationsLocalization(options => {
     options.DataAnnotationLocalizerProvider = (type, factory) =>
