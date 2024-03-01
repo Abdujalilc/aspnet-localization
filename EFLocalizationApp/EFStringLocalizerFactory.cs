@@ -34,8 +34,8 @@ namespace EFLocalizationApp
                         Name = "en",
                         Resources = new List<Resource>()
                         {
-                            new Resource { Key = "Header", Value = "Hello" },
-                            new Resource { Key = "Message", Value = "Welcome" }
+                            new Resource { Key = "Hello", Value = "Hello" },
+                            new Resource { Key = "Welcome", Value = "Welcome" }
                         }
                     },
                     new Culture
@@ -43,8 +43,8 @@ namespace EFLocalizationApp
                         Name = "ru",
                         Resources = new List<Resource>()
                         {
-                            new Resource { Key = "Header", Value = "Привет" },
-                            new Resource { Key = "Message", Value = "Добро пожаловать" }
+                            new Resource { Key = "Hello", Value = "Привет" },
+                            new Resource { Key = "Welcome", Value = "Добро пожаловать" }
                         }
                     },
                     new Culture
@@ -52,8 +52,8 @@ namespace EFLocalizationApp
                         Name = "de",
                         Resources = new List<Resource>()
                         {
-                            new Resource { Key = "Header", Value = "Hallo" },
-                            new Resource { Key = "Message", Value = "Willkommen" }
+                            new Resource { Key = "Hello", Value = "Hallo" },
+                            new Resource { Key = "Welcome", Value = "Willkommen" }
                         }
                     }
                 );
