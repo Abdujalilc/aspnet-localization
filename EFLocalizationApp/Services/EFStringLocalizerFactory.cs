@@ -1,9 +1,10 @@
 ﻿using EFLocalizationApp.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
-namespace EFLocalizationApp
+namespace Services
 {
-    public class EFStringLocalizerFactory : Microsoft.Extensions.Localization.IStringLocalizerFactory
+    public class EFStringLocalizerFactory : IStringLocalizerFactory
     {
         string _connectionString;
         public EFStringLocalizerFactory(string connection)
@@ -11,19 +12,19 @@ namespace EFLocalizationApp
             _connectionString = connection;
         }
 
-        public Microsoft.Extensions.Localization.IStringLocalizer Create(Type resourceSource)
+        public IStringLocalizer Create(Type resourceSource)
         {
             return CreateStringLocalizer();
         }
 
-        public Microsoft.Extensions.Localization.IStringLocalizer Create(string baseName, string location)
+        public IStringLocalizer Create(string baseName, string location)
         {
             return CreateStringLocalizer();
         }
 
-        private Microsoft.Extensions.Localization.IStringLocalizer CreateStringLocalizer()
+        private IStringLocalizer CreateStringLocalizer()
         {
-            LocalizationContext _db = new LocalizationContext( new DbContextOptionsBuilder<LocalizationContext>().UseSqlite(_connectionString).Options);
+            LocalizationContext _db = new LocalizationContext(new DbContextOptionsBuilder<LocalizationContext>().UseSqlServer(_connectionString).Options);
             // seed DB
             if (!_db.Cultures.Any())
             {
