@@ -24,7 +24,7 @@ namespace Services
 
         private IStringLocalizer CreateStringLocalizer()
         {
-            LocalizationContext _db = new LocalizationContext(new DbContextOptionsBuilder<LocalizationContext>().UseSqlServer(_connectionString).Options);
+            LocalizationContext _db = new LocalizationContext(new DbContextOptionsBuilder<LocalizationContext>().UseSqlite(_connectionString).Options);
             // seed DB
             if (!_db.Cultures.Any())
             {
