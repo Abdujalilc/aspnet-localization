@@ -1,6 +1,8 @@
-﻿@inject IHttpContextAccessor HttpContextAccessor;
+﻿@using Microsoft.AspNetCore.Http;
+@using System.IO;
 @{
-    var cookie = HttpContextAccessor.HttpContext.Request.Cookies["language"];
+    var httpContext = ViewContext.HttpContext;
+    var cookie = httpContext.Request.Cookies["language"];
     string lanValue = "";
 
     if (!string.IsNullOrEmpty(cookie))
@@ -24,6 +26,7 @@
     <title>@ViewData["Title"] - Razor Pages</title>
     <link href="~/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="~/jqueryui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/data-tables/select.dataTables.min.css" rel="stylesheet" />
 </head>
 <body>
     <input type="hidden" id="languageValue" value='@lanValue' />
@@ -40,13 +43,13 @@
         <div id="categories" class="col-2">
             <div class="btn-group" name="examples1">
                 <button class="btn btn-secondary btn-lg max-button" type="button">
-                    Reports
+                    Localization
                 </button>
                 <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </button>
                 <div class="dropdown-menu">
-                    <a class="btn btn-secondary d-block" href="/reports/enrollmentbyday">
-                        Test01
+                    <a class="btn btn-secondary d-block" href="/LanguageResources/Index">
+                        LanguageResources
                     </a>
                     <a class="btn btn-secondary d-block" href="/testroute/testaction">
                         Test02
@@ -76,6 +79,7 @@
             <script src="~/jqueryui/jquery-ui.min.js"></script>
             <script src="~/jquery/jquery.validate.min.js"></script>
             <script src="~/jquery/jquery.unobtrusive-ajax.min.js"></script>
+            <script src="~/data-tables/jquery.dataTables.min.js"></script>
         </div>
         <script src="~/js/languageresourse/LanguageArray.js?q=@languageToken"></script>
         <script src="~/js/languageresourse/SetLanguageValue.js?q=@languageToken"></script>

@@ -82,7 +82,6 @@ namespace JsLocalization.Services
                 return false;
             }
         }
-
         public string PublishLanguage()
         {
             string folder = Path.GetFullPath("wwwroot/js/LanguageResourse/");
@@ -134,8 +133,6 @@ namespace JsLocalization.Services
             File.WriteAllText(fullPath, jSONText);
             File.WriteAllText(folder + "/LanguageVersion.txt", Guid.NewGuid().ToString());
         }
-
-
         public DataTableOutputParams<LanguageResourcesVM> LanguageResourcesList(SearchLanguageResourcesVM dModel)
         {
             DataTableOutputParams<LanguageResourcesVM> rResult = new DataTableOutputParams<LanguageResourcesVM>();
@@ -207,7 +204,6 @@ namespace JsLocalization.Services
             }
             return result;
         }
-
         public int CreateRange(List<DbLanguageResource> model)
         {
             return _repository.AddRange(model);

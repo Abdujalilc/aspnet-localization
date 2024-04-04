@@ -1,0 +1,8 @@
+﻿Add-Migration InitCommit
+Update-Database -Verbose
+
+dotnet ef migrations add InitCommit
+
+
+Add-Migration InitCommit -Context SRSDB2Context
+Update-Database -Verbose -Context SRSDB2Context

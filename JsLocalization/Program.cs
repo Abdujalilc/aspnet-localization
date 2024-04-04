@@ -1,8 +1,12 @@
 using JsLocalization.Models;
+using JsLocalization.Services;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
+builder.Services.AddServices();
+
 string? con_string = "Data Source=AppData\\LocalizationDB.db";
 builder.Services.AddSqlite<LanguageDbContext>(con_string);
 WebApplication app = builder.Build();

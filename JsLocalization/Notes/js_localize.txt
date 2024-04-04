@@ -1,1 +1,6 @@
 <div class="lang" key="Dashboard"></div>
+
+
+INSERT INTO SpLanguages (ID, Code, Name, IsActive) VALUES (1, 'uz', 'Uzbek', 1);
+INSERT INTO SpLanguages (ID, Code, Name, IsActive) VALUES (2, 'ru', 'Russian', 1);
+INSERT INTO SpLanguages (ID, Code, Name, IsActive) VALUES (3, 'en', 'English', 1);

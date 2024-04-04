@@ -1,35 +1,29 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using JsLocalization.Models;
 using JsLocalization.ViewModels;
 using JsLocalization.Services;
 using System.Globalization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace SRS.WEB.Controllers
+namespace JsLocalization.Controllers
 {
-    [AllowAnonymous]
     public class LanguageResourcesController : Controller
     {
         private readonly IDbLanguageResourcesService _dbLanguageResourcesService;
         private readonly IDataTableInputParamsService _dataTableInputParamsService;
         private readonly ISpLanguagesService _spLanguagesService;
-        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public LanguageResourcesController(IDbLanguageResourcesService dbLanguageResourcesService, IDataTableInputParamsService dataTableInputParamsService, ISpLanguagesService spLanguagesService, IHttpContextAccessor httpContextAccessor)
+        public LanguageResourcesController(IDbLanguageResourcesService dbLanguageResourcesService, IDataTableInputParamsService dataTableInputParamsService, ISpLanguagesService spLanguagesService)
         {
             _dbLanguageResourcesService = dbLanguageResourcesService;
             _dataTableInputParamsService = dataTableInputParamsService;
             _spLanguagesService = spLanguagesService;
-            _httpContextAccessor = httpContextAccessor;
         }
         public IActionResult Index()
         {
             ViewBag.LanguageList = _spLanguagesService.GetAllAsIQueryable().Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name }).ToList();
             return View();
         }
-
-
         [HttpPost]
         public IActionResult LanguageResourcesRead(IFormCollection form, SearchLanguageResourcesVM dModel)
         {
@@ -50,12 +44,10 @@ namespace SRS.WEB.Controllers
             return RedirectToAction("Index", "LanguageResources");
         }
         public IActionResult CreateRange()
-        {
-            
+        {            
             var model = _spLanguagesService.GetAllAsIQueryable();
             return View(model);
         }
-
         [HttpPost]
         public IActionResult CreateRange(IFormCollection form)
         {
@@ -63,7 +55,6 @@ namespace SRS.WEB.Controllers
             var insertedCount=_dbLanguageResourcesService.CreateRange(models);
             return RedirectToAction("Index", "LanguageResources");
         }
-
         public IActionResult Edit(int id)
         {
             var entModel = _dbLanguageResourcesService.GetByID(id);
@@ -71,14 +62,12 @@ namespace SRS.WEB.Controllers
 
             return View(entModel);
         }
-
         [HttpPost]
         public IActionResult Edit(DbLanguageResource model)
         {
             _dbLanguageResourcesService.Update(model);
             return RedirectToAction("Index", "LanguageResources");
         }
-
         public IActionResult PublishLanguage()
         {
             _dbLanguageResourcesService.PublishLanguageNew();
