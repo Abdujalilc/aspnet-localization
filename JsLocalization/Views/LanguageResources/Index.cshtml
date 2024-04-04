@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+<div class="row mb-2">
+    <div class="col-lg-12">
+        <a href="/LanguageResources/Create" class="btn btn-primary float-start lang" key="Create"></a>
+        <a href="/LanguageResources/CreateRange" class="btn btn-primary float-start lang" key="CreateRange">Create Range</a>
+        <a href="/LanguageResources/PublishLanguage" class="btn btn-primary float-end">Publish</a>
+    </div>
+</div>
+<hr />
+<table id="example" class="table table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th class="lang" key="KeyName"></th>
+            <th class="lang" key="Value">Value</th>
+            <th class="lang" key="languageName">Language type</th>
+            <th></th>
+        </tr>
+    </thead>
+</table>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#example").DataTable({
+                "responsive": true,
+                "lengthChange": true, "autoWidth": false,
+                "processing": true,
+                "serverSide": true,
+                "filter": true,
+                "orderMulti": false,
+                "pageLength": 20,
+                "lengthMenu": [10, 20, 50, 75, 100],
+                "ajax": {
+                    "url": "/LanguageResources/LanguageResourcesRead",
+                    "type": "POST",
+                    "datatype": "json",
+                    "data": function (d) {
+                    }
+                },
+                "order": [0, "desc"],
+                "columns": [
+                    { "data": "id", "name": "ID", "autoWidth": true },
+                    { "data": "keyName", "name": "KeyName", "autoWidth": true },
+                    { "data": "value", "name": "Value", "autoWidth": true },
+                    { "data": "languageName", "name": "LanguageName", "autoWidth": true },
+                    {
+                        "data": null,
+                        "name": "ID",
+                        "render": function (data, type, row) {
+                            return '<a href="/LanguageResources/Edit?id=' + row.id + '" style="cursor:pointer;">Edit</a>'
+                        },
+                        "sort": false
+                    },
+                ]
+            });
+
+        });
+        function filterLanguage() {
+            $('#example').DataTable().ajax.reload();
+        }
+    </script>
+}

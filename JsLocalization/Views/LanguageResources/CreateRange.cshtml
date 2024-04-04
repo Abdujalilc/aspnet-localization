@@ -1,0 +1,53 @@
+﻿@using JsLocalization.Models
+@model IQueryable<SpLanguage>
+<div class="card card-primary card-outline">
+    <div class="card-header">
+        <h3 class="card-title">
+            Create - Language Resource
+        </h3>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="control-label" for="KeyName">Key Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input name="KeyName" class="form-control" required />
+                        </div>
+                    </div>
+                </div>
+                @foreach (var item in Model)
+                {
+                    <div class="card card-success card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                @item.Name
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label class="control-label" for="KeyName">Value</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input name="@Html.Raw("Value_"+item.Code)" class="form-control" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 mt-4 pb-4">
+                        <a href="/LanguageResources" class="btn btn-info">Back to list</a>
+                        <input type="submit" value="Create" class="btn btn-success" style="float:right;" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

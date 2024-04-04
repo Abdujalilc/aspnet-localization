@@ -1,4 +1,22 @@
-﻿<!DOCTYPE html>
+﻿@inject IHttpContextAccessor HttpContextAccessor;
+@{
+    var cookie = HttpContextAccessor.HttpContext.Request.Cookies["language"];
+    string lanValue = "";
+
+    if (!string.IsNullOrEmpty(cookie))
+    {
+        lanValue = cookie;
+    }
+
+    string directory = System.IO.Path.GetFullPath("wwwroot");
+    string languageTokenFile = "/js/languageresourse/LanguageVersion.txt";
+    string languageToken = Guid.NewGuid().ToString();
+    if (File.Exists(directory + languageTokenFile))
+    {
+        languageToken = File.ReadAllText(directory + languageTokenFile);
+    }
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,12 +26,17 @@
     <link href="~/jqueryui/jquery-ui.min.css" rel="stylesheet" />
 </head>
 <body>
+    <input type="hidden" id="languageValue" value='@lanValue' />
     <style>
-        .max-button{
+        .max-button {
             width: 200px
         }
     </style>
+    <div>
+        @Html.Partial("_LanguageResoursePartial", lanValue)
+    </div>
     <div class="row m-1 p-1">
+
         <div id="categories" class="col-2">
             <div class="btn-group" name="examples1">
                 <button class="btn btn-secondary btn-lg max-button" type="button">
@@ -54,6 +77,8 @@
             <script src="~/jquery/jquery.validate.min.js"></script>
             <script src="~/jquery/jquery.unobtrusive-ajax.min.js"></script>
         </div>
+        <script src="~/js/languageresourse/LanguageArray.js?q=@languageToken"></script>
+        <script src="~/js/languageresourse/SetLanguageValue.js?q=@languageToken"></script>
         @await RenderSectionAsync("Scripts", required: false)
     </div>
 </body>

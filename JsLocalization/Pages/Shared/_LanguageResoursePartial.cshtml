@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Http.Extensions
+@model string;
+<a class="nav-link" data-toggle="dropdown" href="#">
+    <i class="far fa-flag"></i> @Model
+</a>
+<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+    <a href="/LanguageResources/ChangeCulture?lang=uz&returnUrl=@Context.Request.GetDisplayUrl()" class="dropdown-item">
+        Uz
+    </a>
+    <div class="dropdown-divider"></div>
+    <a href="/LanguageResources/ChangeCulture?lang=ru&returnUrl=@Context.Request.GetDisplayUrl()" class="dropdown-item">
+        Ru
+    </a>
+    <div class="dropdown-divider"></div>
+    <a href="/LanguageResources/ChangeCulture?lang=en&returnUrl=@Context.Request.GetDisplayUrl()" class="dropdown-item">
+        En
+    </a>
+    <div class="dropdown-divider"></div>
+</div>
