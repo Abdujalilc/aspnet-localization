@@ -4,3 +4,13 @@
 INSERT INTO SpLanguages (ID, Code, Name, IsActive) VALUES (1, 'uz', 'Uzbek', 1);
 INSERT INTO SpLanguages (ID, Code, Name, IsActive) VALUES (2, 'ru', 'Russian', 1);
 INSERT INTO SpLanguages (ID, Code, Name, IsActive) VALUES (3, 'en', 'English', 1);
+
+INSERT INTO DbLanguageResources (ID, KeyName, Value, LangID) VALUES (24591, 'Dashboard', 'Ma’lumotlar panel', 1);
+INSERT INTO DbLanguageResources (ID, KeyName, Value, LangID) VALUES (24592, 'Dashboard', 'Информационная панель', 2);
+INSERT INTO DbLanguageResources (ID, KeyName, Value, LangID) VALUES (24593, 'Dashboard', 'Dashboard', 3);
+INSERT INTO DbLanguageResources (ID, KeyName, Value, LangID) VALUES (24595, 'KeyName', 'Ключевое слово', 2);
+INSERT INTO DbLanguageResources (ID, KeyName, Value, LangID) VALUES (24596, 'KeyName', 'Key Name', 3);
+INSERT INTO DbLanguageResources (ID, KeyName, Value, LangID) VALUES (24597, 'KeyName', 'Kalit so‘z', 1);
+INSERT INTO DbLanguageResources (ID, KeyName, Value, LangID) VALUES (24598, 'Create', 'Qo''shish', 1);
+INSERT INTO DbLanguageResources (ID, KeyName, Value, LangID) VALUES (24599, 'Create', 'Добавить', 2);
+INSERT INTO DbLanguageResources (ID, KeyName, Value, LangID) VALUES (24600, 'Create', 'Create', 3);

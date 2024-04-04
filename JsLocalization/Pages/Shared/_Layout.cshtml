@@ -3,7 +3,7 @@
 @{
     var httpContext = ViewContext.HttpContext;
     var cookie = httpContext.Request.Cookies["language"];
-    string lanValue = "";
+    string lanValue = "uz";
 
     if (!string.IsNullOrEmpty(cookie))
     {
@@ -36,10 +36,9 @@
         }
     </style>
     <div>
-        @Html.Partial("_LanguageResoursePartial", lanValue)
+        <partial name="_LanguageResoursePartial" for="@lanValue" />
     </div>
     <div class="row m-1 p-1">
-
         <div id="categories" class="col-2">
             <div class="btn-group" name="examples1">
                 <button class="btn btn-secondary btn-lg max-button" type="button">
