@@ -8,7 +8,7 @@ namespace Extensions
     {
         public static void AddServices(this IServiceCollection services)
         {
-            services.AddScoped<ResourcesService, ResourcesService>();
+            services.AddScoped<ResourceService, ResourceService>();
             services.AddScoped<IDataTableInputParamsService, DataTableInputParamsService>();
             services.AddScoped<ICultureService, CultureService>();
             services.AddScoped<IRepository<Culture>, Repository<Culture>>();

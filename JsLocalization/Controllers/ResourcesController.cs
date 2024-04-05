@@ -7,15 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace JsLocalization.Controllers
 {
-    public class ResourcesController : Controller
+    public class ResourceController : Controller
     {
-        private readonly ResourcesService _resourcesService;
+        private readonly ResourceService _resourceService;
         private readonly IDataTableInputParamsService _dataTableInputParamsService;
         private readonly ICultureService _cultureService;
 
-        public ResourcesController(ResourcesService resourcesService, IDataTableInputParamsService dataTableInputParamsService, ICultureService cultureService)
+        public ResourceController(ResourceService resourceService, IDataTableInputParamsService dataTableInputParamsService, ICultureService cultureService)
         {
-            _resourcesService = resourcesService;
+            _resourceService = resourceService;
             _dataTableInputParamsService = dataTableInputParamsService;
             _cultureService = cultureService;
         }
@@ -25,11 +25,11 @@ namespace JsLocalization.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult ResourcesRead(IFormCollection form, SearchResourcesVM dModel)
+        public IActionResult ResourceRead(IFormCollection form, SearchResourceVM dModel)
         {
             dModel.dataTableParams = new DataTableInputParams();
             dModel.dataTableParams = _dataTableInputParamsService.ToModel(form);
-            var rResult = _resourcesService.ResourcesList(dModel);
+            var rResult = _resourceService.ResourceList(dModel);
             return Json(new { recordsFiltered = rResult.recordsTotal, recordsTotal = rResult.recordsFiltered, data = rResult.data });
         }
         public IActionResult Create()
@@ -40,8 +40,8 @@ namespace JsLocalization.Controllers
         [HttpPost]
         public IActionResult Create(Resource model)
         {
-            _resourcesService.Create(model);
-            return RedirectToAction("Index", "Resources");
+            _resourceService.Create(model);
+            return RedirectToAction("Index", "Resource");
         }
         public IActionResult CreateRange()
         {            
@@ -51,27 +51,27 @@ namespace JsLocalization.Controllers
         [HttpPost]
         public IActionResult CreateRange(IFormCollection form)
         {
-            var models=_resourcesService.GetByFormCollection(form);
-            var insertedCount=_resourcesService.CreateRange(models);
-            return RedirectToAction("Index", "Resources");
+            var models=_resourceService.GetByFormCollection(form);
+            var insertedCount=_resourceService.CreateRange(models);
+            return RedirectToAction("Index", "Resource");
         }
         public IActionResult Edit(int id)
         {
-            var entModel = _resourcesService.GetByID(id);
-            if (entModel == null) return RedirectToAction("Index", "Resources");
+            var entModel = _resourceService.GetByID(id);
+            if (entModel == null) return RedirectToAction("Index", "Resource");
 
             return View(entModel);
         }
         [HttpPost]
         public IActionResult Edit(Resource model)
         {
-            _resourcesService.Update(model);
-            return RedirectToAction("Index", "Resources");
+            _resourceService.Update(model);
+            return RedirectToAction("Index", "Resource");
         }
         public IActionResult UpdateResource()
         {
-            _resourcesService.UpdateResourceFIle();
-            return RedirectToAction("Index", "Resources");
+            _resourceService.UpdateResourceFIle();
+            return RedirectToAction("Index", "Resource");
         }
         public IActionResult ChangeCulture(string culture, string returnUrl)
         {

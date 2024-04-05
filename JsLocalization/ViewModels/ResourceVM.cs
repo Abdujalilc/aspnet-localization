@@ -1,11 +1,11 @@
 ﻿namespace JsLocalization.ViewModels
 {
-    public class SearchResourcesVM : DataTableSearchModel
+    public class SearchResourceVM : DataTableSearchModel
     {
         public int LanguageID { get; set; }
     }
 
-    public class ResourcesVM
+    public class ResourceVM
     {
         public int ID { get; set; }
         public string KeyName { get; set; }

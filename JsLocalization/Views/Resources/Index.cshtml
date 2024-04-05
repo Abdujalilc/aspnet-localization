@@ -3,9 +3,9 @@
 }
 <div class="row mb-2">
     <div class="col-lg-12">
-        <a href="/Resources/Create" class="btn btn-primary float-start lang m-2" key="create">Create Single</a>
-        <a href="/Resources/CreateRange" class="btn btn-primary float-start lang m-2" key="createRange">Create Range</a>
-        <a href="/Resources/UpdateResource" class="btn btn-primary float-end lang"  key="updateResource">Update Resource</a>
+        <a href="/Resource/Create" class="btn btn-primary float-start lang m-2" key="create">Create Single</a>
+        <a href="/Resource/CreateRange" class="btn btn-primary float-start lang m-2" key="createRange">Create Range</a>
+        <a href="/Resource/UpdateResource" class="btn btn-primary float-end lang"  key="updateResource">Update Resource</a>
     </div>
 </div>
 <hr />
@@ -35,7 +35,7 @@
                 "pageLength": 20,
                 "lengthMenu": [10, 20, 50, 75, 100],
                 "ajax": {
-                    "url": "/Resources/ResourcesRead",
+                    "url": "/Resource/ResourceRead",
                     "type": "POST",
                     "datatype": "json",
                     "data": function (d) {
@@ -51,7 +51,7 @@
                         "data": null,
                         "name": "ID",
                         "render": function (data, type, row) {
-                            return '<a href="/Resources/Edit?id=' + row.id + '" style="cursor:pointer;">Edit</a>'
+                            return '<a href="/Resource/Edit?id=' + row.id + '" style="cursor:pointer;">Edit</a>'
                         },
                         "sort": false
                     },

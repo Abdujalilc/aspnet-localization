@@ -5,24 +5,24 @@ using System.Text.Json;
 
 namespace JsLocalization.Services
 {
-    public interface IResourcesService
+    public interface IResourceService
     {
         Resource GetByID(int id);
         bool Create(Resource role);
         int CreateRange(List<Resource> model);
         bool Update(Resource role);
         bool Delete(int id);
-        DataTableOutputParams<ResourcesVM> ResourcesList(SearchResourcesVM dModel);
+        DataTableOutputParams<ResourceVM> ResourceList(SearchResourceVM dModel);
         void UpdateResourceFIle();
         IQueryable<Resource> GetAllAsIQueryable();
         List<Resource> GetByFormCollection(IFormCollection form);
     }
-    public class ResourcesService : IResourcesService
+    public class ResourceService : IResourceService
     {
         IRepository<Resource> _repository;
         private readonly ICultureService _cultureService;
 
-        public ResourcesService(IRepository<Resource> repository, ICultureService cultureService)
+        public ResourceService(IRepository<Resource> repository, ICultureService cultureService)
         {
             _repository = repository;
             _cultureService = cultureService;
@@ -108,9 +108,9 @@ namespace JsLocalization.Services
             File.WriteAllText(fullPath, jSONText);
             File.WriteAllText(folder + "/LastUpdateVersion.txt", Guid.NewGuid().ToString());
         }
-        public DataTableOutputParams<ResourcesVM> ResourcesList(SearchResourcesVM dModel)
+        public DataTableOutputParams<ResourceVM> ResourceList(SearchResourceVM dModel)
         {
-            DataTableOutputParams<ResourcesVM> rResult = new DataTableOutputParams<ResourcesVM>();
+            DataTableOutputParams<ResourceVM> rResult = new DataTableOutputParams<ResourceVM>();
             var lanRes = GetAllAsIQueryable().IncludeMultiple(p => p.Lang);
 
             if (!string.IsNullOrEmpty(dModel.dataTableParams.search))
@@ -142,12 +142,12 @@ namespace JsLocalization.Services
             rResult.recordsTotal = lanRes.Count();
             var _signed = lanRes.Skip(dModel.dataTableParams.skip).Take(dModel.dataTableParams.take).ToList();
             rResult.recordsFiltered = _signed.Count();
-            List<ResourcesVM> list = new List<ResourcesVM>();
-            ResourcesVM model = new ResourcesVM();
+            List<ResourceVM> list = new List<ResourceVM>();
+            ResourceVM model = new ResourceVM();
 
             foreach (var item in _signed)
             {
-                model = new ResourcesVM();
+                model = new ResourceVM();
                 model.ID = item.Id;
                 model.LanguageID = item.LangId;
                 model.KeyName = item.KeyName;
