@@ -1,1 +1,1 @@
-var resourceArray = {"uz":{"KeyName":"Kalit so‘z","Create":"Qo'shish","CreateRange":"Diapazon yaratish"},"ru":{"KeyName":"Ключевое слово","Create":"Добавить","CreateRange":"Sozdat Diapazon"},"en":{"KeyName":"Key Name","Create":"Create","CreateRange":"Create Range"}}  
+var resourceArray = {"uz":{"KeyName":"Kalit so‘z","create":"Qo'shish","createRange":"Diapazon yaratish"},"ru":{"KeyName":"Ключевое слово","create":"Добавить","createRange":"Sozdat Diapazon"},"en":{"KeyName":"Key Name","create":"Create","createRange":"Create Range"}}  

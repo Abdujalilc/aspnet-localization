@@ -11,6 +11,6 @@ INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (3, 'Dashboard', 'Dash
 INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (4, 'KeyName', 'Ключевое слово', 2);
 INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (5, 'KeyName', 'Key Name', 3);
 INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (6, 'KeyName', 'Kalit so‘z', 1);
-INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (7, 'Create', 'Qo''shish', 1);
-INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (8, 'Create', 'Добавить', 2);
-INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (9, 'Create', 'Create', 3);
+INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (7, 'create', 'Qo''shish', 1);
+INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (8, 'create', 'Добавить', 2);
+INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (9, 'create', 'Create', 3);

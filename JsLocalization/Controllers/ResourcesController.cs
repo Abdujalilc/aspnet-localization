@@ -68,9 +68,9 @@ namespace JsLocalization.Controllers
             _resourcesService.Update(model);
             return RedirectToAction("Index", "Resources");
         }
-        public IActionResult PublishLanguage()
+        public IActionResult UpdateResource()
         {
-            _resourcesService.PublishLanguageNew();
+            _resourcesService.UpdateResourceFIle();
             return RedirectToAction("Index", "Resources");
         }
         public IActionResult ChangeCulture(string culture, string returnUrl)

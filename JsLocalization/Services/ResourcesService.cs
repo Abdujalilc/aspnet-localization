@@ -12,9 +12,8 @@ namespace JsLocalization.Services
         int CreateRange(List<Resource> model);
         bool Update(Resource role);
         bool Delete(int id);
-        string PublishLanguage();
         DataTableOutputParams<ResourcesVM> ResourcesList(SearchResourcesVM dModel);
-        void PublishLanguageNew();
+        void UpdateResourceFIle();
         IQueryable<Resource> GetAllAsIQueryable();
         List<Resource> GetByFormCollection(IFormCollection form);
     }
@@ -82,31 +81,7 @@ namespace JsLocalization.Services
                 return false;
             }
         }
-        public string PublishLanguage()
-        {
-            string folder = Path.GetFullPath("wwwroot/js/Localization/");
-           
-            var lan = GetAllAsIQueryable().Where(x => x.LangId == 1).Select(x => new { key = x.KeyName, value = x.Value }).ToList();
-            var json = "LanguageDataUZ=" + JsonSerializer.Serialize(lan);
-            string fileName = "LanguagesUZ.js";
-            string fullPath = folder + fileName;
-            File.WriteAllText(fullPath, json);
-
-            lan = GetAllAsIQueryable().Where(x => x.LangId == 2).Select(x => new { key = x.KeyName, value = x.Value }).ToList();
-            json = "LanguageDataRU=" + JsonSerializer.Serialize(lan);
-            fileName = "LanguagesRU.js";
-            fullPath = folder + fileName;
-            File.WriteAllText(fullPath, json);
-
-            lan = GetAllAsIQueryable().Where(x => x.LangId == 3).Select(x => new { key = x.KeyName, value = x.Value }).ToList();
-            json = "LanguageDataEN=" + JsonSerializer.Serialize(lan);
-            fileName = "LanguagesEN.js";
-            fullPath = folder + fileName;
-            File.WriteAllText(fullPath, json);
-            File.WriteAllText(folder + "/LanguageToken.txt", Guid.NewGuid().ToString());
-            return "";
-        }
-        public void PublishLanguageNew()
+        public void UpdateResourceFIle()
         {
             string folder = Path.GetFullPath("wwwroot/js/Localization/");
             var languageType = _cultureService.GetAllAsIQueryable().Where(x => x.IsActive == true).ToList();
@@ -128,7 +103,7 @@ namespace JsLocalization.Services
             jSONText = jSONText.TrimEnd(',');
             jSONText = jSONText + "}  ";
             
-            fileName = "LanguageArray.js";
+            fileName = "ResourceArray.js";
             fullPath = folder + fileName;
             File.WriteAllText(fullPath, jSONText);
             File.WriteAllText(folder + "/LastUpdateVersion.txt", Guid.NewGuid().ToString());
