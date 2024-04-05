@@ -73,13 +73,11 @@ namespace JsLocalization.Controllers
             _resourcesService.PublishLanguageNew();
             return RedirectToAction("Index", "Resources");
         }
-        public IActionResult ChangeCulture(string lang, string returnUrl)
+        public IActionResult ChangeCulture(string culture, string returnUrl)
         {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(lang);
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(lang);
-            var cookie = Request.Cookies["language"];
-            cookie = lang;
-            Response.Cookies.Append("language", cookie);
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(culture);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(culture);            
+            Response.Cookies.Append("culture", culture);
             return Redirect(returnUrl);
         }
     }

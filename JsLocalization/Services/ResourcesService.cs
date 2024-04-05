@@ -113,7 +113,7 @@ namespace JsLocalization.Services
             var languageAll = GetAllAsIQueryable().Select(x => new { KeyName = x.KeyName, Value = x.Value, LangID = x.LangId }).ToList();
             string fileName = "";
             string fullPath = "";
-            string jSONText = "var arrLang = {";
+            string jSONText = "var resourceArray = {";
             foreach (var item in languageType)
             {
                 var language = languageAll.Where(x => x.LangID == item.Id).ToList();

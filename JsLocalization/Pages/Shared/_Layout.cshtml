@@ -2,20 +2,20 @@
 @using System.IO;
 @{
     var httpContext = ViewContext.HttpContext;
-    var cookie = httpContext.Request.Cookies["language"];
-    string lanValue = "uz";
+    var cookie = httpContext.Request.Cookies["culture"];
+    string cultureName = "uz";
 
     if (!string.IsNullOrEmpty(cookie))
     {
-        lanValue = cookie;
+        cultureName = cookie;
     }
 
-    string directory = System.IO.Path.GetFullPath("wwwroot");
-    string languageTokenFile = "/js/Localization/LastUpdateVersion.txt";
-    string languageToken = Guid.NewGuid().ToString();
-    if (File.Exists(directory + languageTokenFile))
+    string web_root = System.IO.Path.GetFullPath("wwwroot");
+    string resourceVersion = "/js/Localization/LastUpdateVersion.txt";
+    string versionGUID = Guid.NewGuid().ToString();
+    if (File.Exists(web_root + resourceVersion))
     {
-        languageToken = File.ReadAllText(directory + languageTokenFile);
+        versionGUID = File.ReadAllText(web_root + resourceVersion);
     }
 }
 <!DOCTYPE html>
@@ -23,20 +23,20 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Razor Pages</title>
+    <title>@ViewData["Title"] - Localization</title>
     <link href="~/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="~/jqueryui/jquery-ui.min.css" rel="stylesheet" />
     <link href="~/data-tables/select.dataTables.min.css" rel="stylesheet" />
 </head>
 <body>
-    <input type="hidden" id="languageValue" value='@lanValue' />
+    <input type="hidden" id="cultureName" value='@cultureName' />
     <style>
         .max-button {
             width: 200px
         }
     </style>
     <div>
-        <partial name="_CultureListPartial" for="@lanValue" />
+        <partial name="_CultureListPartial" for="@cultureName" />
     </div>
     <div class="row m-1 p-1">
         <div id="categories" class="col-2">
@@ -55,18 +55,6 @@
                     </a>
                 </div>
             </div>
-            <div class="btn-group" id="examples2">
-                <button class="btn btn-secondary btn-lg max-button" type="button">
-                    Test
-                </button>
-                <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                </button>
-                <div class="dropdown-menu">
-                    <a class="btn btn-secondary d-block" href="/Test/index">
-                        Test
-                    </a>
-                </div>
-            </div>
         </div>
         <div class="col-10">
             @RenderBody()
@@ -80,8 +68,8 @@
             <script src="~/jquery/jquery.unobtrusive-ajax.min.js"></script>
             <script src="~/data-tables/jquery.dataTables.min.js"></script>
         </div>
-        <script src="~/js/localization/LanguageArray.js?q=@languageToken"></script>
-        <script src="~/js/localization/SetLanguageValue.js?q=@languageToken"></script>
+        <script src="~/js/localization/ResourceArray.js?q=@versionGUID"></script>
+        <script src="~/js/localization/SetLanguageValue.js?q=@versionGUID"></script>
         @await RenderSectionAsync("Scripts", required: false)
     </div>
 </body>

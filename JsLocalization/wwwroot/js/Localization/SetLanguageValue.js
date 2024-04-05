@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
-    var lang = $("#languageValue").val();
+    var culture = $("#cultureName").val();
     $(".lang").each(function (index, element) {
-        $(this).text(arrLang[lang][$(this).attr("key")]);
+        $(this).text(resourceArray[culture][$(this).attr("key")]);
     });
 });
