@@ -3,22 +3,24 @@
 @{
     string test = Model;
 }
-<div>
-    Language:
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="far fa-flag"></i> @Model
-    </a>
-    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-start" aria-labelledby="navbarDropdown">
-        <a href="/eResources/ChangeCulture?lang=uz&returnUrl=@Context.Request.GetDisplayUrl()" class="dropdown-item">
-            Uz
+<div class="d-flex align-items-center">
+    <span class="me-2">Language:</span>
+    <div class="dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="far fa-flag"></i> @Model
         </a>
-        <div class="dropdown-divider"></div>
-        <a href="/Resources/ChangeCulture?lang=ru&returnUrl=@Context.Request.GetDisplayUrl()" class="dropdown-item">
-            Ru
-        </a>
-        <div class="dropdown-divider"></div>
-        <a href="/Resources/ChangeCulture?lang=en&returnUrl=@Context.Request.GetDisplayUrl()" class="dropdown-item">
-            En
-        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-start" aria-labelledby="navbarDropdown">
+            <a href="/Resources/ChangeCulture?lang=uz&returnUrl=@Context.Request.GetDisplayUrl()" class="dropdown-item">
+                Uz
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="/Resources/ChangeCulture?lang=ru&returnUrl=@Context.Request.GetDisplayUrl()" class="dropdown-item">
+                Ru
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="/Resources/ChangeCulture?lang=en&returnUrl=@Context.Request.GetDisplayUrl()" class="dropdown-item">
+                En
+            </a>
+        </div>
     </div>
 </div>

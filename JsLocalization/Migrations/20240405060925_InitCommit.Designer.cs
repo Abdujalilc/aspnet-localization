@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace _10_JsLocalization.Migrations
 {
     [DbContext(typeof(LocalizationContext))]
-    [Migration("20240405051932_InitCommit")]
+    [Migration("20240405060925_InitCommit")]
     partial class InitCommit
     {
         /// <inheritdoc />
@@ -39,7 +39,7 @@ namespace _10_JsLocalization.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SpLanguages");
+                    b.ToTable("Cultures");
                 });
 
             modelBuilder.Entity("JsLocalization.Models.Resource", b =>
@@ -63,13 +63,13 @@ namespace _10_JsLocalization.Migrations
 
                     b.HasIndex("LangId");
 
-                    b.ToTable("DbLanguageResources");
+                    b.ToTable("Resources");
                 });
 
             modelBuilder.Entity("JsLocalization.Models.Resource", b =>
                 {
                     b.HasOne("JsLocalization.Models.Culture", "Lang")
-                        .WithMany("DbLanguageResources")
+                        .WithMany("Resources")
                         .HasForeignKey("LangId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -79,7 +79,7 @@ namespace _10_JsLocalization.Migrations
 
             modelBuilder.Entity("JsLocalization.Models.Culture", b =>
                 {
-                    b.Navigation("DbLanguageResources");
+                    b.Navigation("Resources");
                 });
 #pragma warning restore 612, 618
         }

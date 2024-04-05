@@ -14,5 +14,6 @@ namespace JsLocalization.Models
     }
     public partial class Resource: BaseEntity
     {
+
     }    
 }
