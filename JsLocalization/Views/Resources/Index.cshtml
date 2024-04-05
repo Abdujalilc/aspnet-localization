@@ -4,9 +4,9 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
 <div class="row mb-2">
     <div class="col-lg-12">
-        <a href="/LanguageResources/Create" class="btn btn-primary float-start lang m-2" key="Create">Create Single</a>
-        <a href="/LanguageResources/CreateRange" class="btn btn-primary float-start lang m-2" key="CreateRange">Create Range</a>
-        <a href="/LanguageResources/PublishLanguage" class="btn btn-primary float-end lang"  key="Publish">Publish</a>
+        <a href="/Resources/Create" class="btn btn-primary float-start lang m-2" key="Create">Create Single</a>
+        <a href="/Resources/CreateRange" class="btn btn-primary float-start lang m-2" key="CreateRange">Create Range</a>
+        <a href="/Resources/PublishLanguage" class="btn btn-primary float-end lang"  key="Publish">Publish</a>
     </div>
 </div>
 <hr />
@@ -36,7 +36,7 @@
                 "pageLength": 20,
                 "lengthMenu": [10, 20, 50, 75, 100],
                 "ajax": {
-                    "url": "/LanguageResources/LanguageResourcesRead",
+                    "url": "/Resources/LanguageResourcesRead",
                     "type": "POST",
                     "datatype": "json",
                     "data": function (d) {
@@ -52,7 +52,7 @@
                         "data": null,
                         "name": "ID",
                         "render": function (data, type, row) {
-                            return '<a href="/LanguageResources/Edit?id=' + row.id + '" style="cursor:pointer;">Edit</a>'
+                            return '<a href="/Resources/Edit?id=' + row.id + '" style="cursor:pointer;">Edit</a>'
                         },
                         "sort": false
                     },

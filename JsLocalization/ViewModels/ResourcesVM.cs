@@ -5,7 +5,7 @@
         public int LanguageID { get; set; }
     }
 
-    public class LanguageResourcesVM
+    public class ResourcesVM
     {
         public int ID { get; set; }
         public string KeyName { get; set; }

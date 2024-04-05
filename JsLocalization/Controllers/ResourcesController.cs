@@ -7,13 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace JsLocalization.Controllers
 {
-    public class LanguageResourcesController : Controller
+    public class ResourcesController : Controller
     {
-        private readonly IDbLanguageResourcesService _dbLanguageResourcesService;
+        private readonly ResourcesService _dbLanguageResourcesService;
         private readonly IDataTableInputParamsService _dataTableInputParamsService;
-        private readonly ISpLanguagesService _spLanguagesService;
+        private readonly ICultureService _spLanguagesService;
 
-        public LanguageResourcesController(IDbLanguageResourcesService dbLanguageResourcesService, IDataTableInputParamsService dataTableInputParamsService, ISpLanguagesService spLanguagesService)
+        public ResourcesController(ResourcesService dbLanguageResourcesService, IDataTableInputParamsService dataTableInputParamsService, ICultureService spLanguagesService)
         {
             _dbLanguageResourcesService = dbLanguageResourcesService;
             _dataTableInputParamsService = dataTableInputParamsService;
@@ -34,14 +34,14 @@ namespace JsLocalization.Controllers
         }
         public IActionResult Create()
         {
-            DbLanguageResource model = new DbLanguageResource();
+            Resource model = new Resource();
             return View(model);
         }
         [HttpPost]
-        public IActionResult Create(DbLanguageResource model)
+        public IActionResult Create(Resource model)
         {
             _dbLanguageResourcesService.Create(model);
-            return RedirectToAction("Index", "LanguageResources");
+            return RedirectToAction("Index", "Resources");
         }
         public IActionResult CreateRange()
         {            
@@ -53,25 +53,25 @@ namespace JsLocalization.Controllers
         {
             var models=_dbLanguageResourcesService.GetByFormCollection(form);
             var insertedCount=_dbLanguageResourcesService.CreateRange(models);
-            return RedirectToAction("Index", "LanguageResources");
+            return RedirectToAction("Index", "Resources");
         }
         public IActionResult Edit(int id)
         {
             var entModel = _dbLanguageResourcesService.GetByID(id);
-            if (entModel == null) return RedirectToAction("Index", "LanguageResources");
+            if (entModel == null) return RedirectToAction("Index", "Resources");
 
             return View(entModel);
         }
         [HttpPost]
-        public IActionResult Edit(DbLanguageResource model)
+        public IActionResult Edit(Resource model)
         {
             _dbLanguageResourcesService.Update(model);
-            return RedirectToAction("Index", "LanguageResources");
+            return RedirectToAction("Index", "Resources");
         }
         public IActionResult PublishLanguage()
         {
             _dbLanguageResourcesService.PublishLanguageNew();
-            return RedirectToAction("Index", "LanguageResources");
+            return RedirectToAction("Index", "Resources");
         }
         public IActionResult ChangeCulture(string lang, string returnUrl)
         {

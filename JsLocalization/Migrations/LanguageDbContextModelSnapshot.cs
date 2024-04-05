@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace _10_JsLocalization.Migrations
 {
-    [DbContext(typeof(LanguageDbContext))]
+    [DbContext(typeof(LocalizationContext))]
     partial class LanguageDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -17,7 +17,29 @@ namespace _10_JsLocalization.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.3");
 
-            modelBuilder.Entity("JsLocalization.Models.DbLanguageResource", b =>
+            modelBuilder.Entity("JsLocalization.Models.Culture", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SpLanguages");
+                });
+
+            modelBuilder.Entity("JsLocalization.Models.Resource", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -41,31 +63,9 @@ namespace _10_JsLocalization.Migrations
                     b.ToTable("DbLanguageResources");
                 });
 
-            modelBuilder.Entity("JsLocalization.Models.SpLanguage", b =>
+            modelBuilder.Entity("JsLocalization.Models.Resource", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool?>("IsActive")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SpLanguages");
-                });
-
-            modelBuilder.Entity("JsLocalization.Models.DbLanguageResource", b =>
-                {
-                    b.HasOne("JsLocalization.Models.SpLanguage", "Lang")
+                    b.HasOne("JsLocalization.Models.Culture", "Lang")
                         .WithMany("DbLanguageResources")
                         .HasForeignKey("LangId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -74,7 +74,7 @@ namespace _10_JsLocalization.Migrations
                     b.Navigation("Lang");
                 });
 
-            modelBuilder.Entity("JsLocalization.Models.SpLanguage", b =>
+            modelBuilder.Entity("JsLocalization.Models.Culture", b =>
                 {
                     b.Navigation("DbLanguageResources");
                 });

@@ -5,37 +5,37 @@ using System.Text.Json;
 
 namespace JsLocalization.Services
 {
-    public interface IDbLanguageResourcesService
+    public interface IResourcesService
     {
-        DbLanguageResource GetByID(int id);
-        bool Create(DbLanguageResource role);
-        int CreateRange(List<DbLanguageResource> model);
-        bool Update(DbLanguageResource role);
+        Resource GetByID(int id);
+        bool Create(Resource role);
+        int CreateRange(List<Resource> model);
+        bool Update(Resource role);
         bool Delete(int id);
         string PublishLanguage();
-        DataTableOutputParams<LanguageResourcesVM> LanguageResourcesList(SearchLanguageResourcesVM dModel);
+        DataTableOutputParams<ResourcesVM> LanguageResourcesList(SearchLanguageResourcesVM dModel);
         void PublishLanguageNew();
-        IQueryable<DbLanguageResource> GetAllAsIQueryable();
-        List<DbLanguageResource> GetByFormCollection(IFormCollection form);
+        IQueryable<Resource> GetAllAsIQueryable();
+        List<Resource> GetByFormCollection(IFormCollection form);
     }
-    public class DbLanguageResourcesService : IDbLanguageResourcesService
+    public class ResourcesService : IResourcesService
     {
-        IRepository<DbLanguageResource> _repository;
-        private readonly ISpLanguagesService _spLanguagesService;
+        IRepository<Resource> _repository;
+        private readonly ICultureService _spLanguagesService;
 
-        public DbLanguageResourcesService(IRepository<DbLanguageResource> repository, ISpLanguagesService spLanguagesService)
+        public ResourcesService(IRepository<Resource> repository, ICultureService spLanguagesService)
         {
             _repository = repository;
             _spLanguagesService = spLanguagesService;
         }
 
-        public DbLanguageResource GetByID(int id)
+        public Resource GetByID(int id)
         {
             var rep = _repository.Get(id);
             return rep;
         }
 
-        public bool Create(DbLanguageResource model)
+        public bool Create(Resource model)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace JsLocalization.Services
             }
         }
 
-        public bool Update(DbLanguageResource model)
+        public bool Update(Resource model)
         {
             try
             {
@@ -133,9 +133,9 @@ namespace JsLocalization.Services
             File.WriteAllText(fullPath, jSONText);
             File.WriteAllText(folder + "/LanguageVersion.txt", Guid.NewGuid().ToString());
         }
-        public DataTableOutputParams<LanguageResourcesVM> LanguageResourcesList(SearchLanguageResourcesVM dModel)
+        public DataTableOutputParams<ResourcesVM> LanguageResourcesList(SearchLanguageResourcesVM dModel)
         {
-            DataTableOutputParams<LanguageResourcesVM> rResult = new DataTableOutputParams<LanguageResourcesVM>();
+            DataTableOutputParams<ResourcesVM> rResult = new DataTableOutputParams<ResourcesVM>();
             var lanRes = GetAllAsIQueryable().IncludeMultiple(p => p.Lang);
 
             if (!string.IsNullOrEmpty(dModel.dataTableParams.search))
@@ -167,12 +167,12 @@ namespace JsLocalization.Services
             rResult.recordsTotal = lanRes.Count();
             var _signed = lanRes.Skip(dModel.dataTableParams.skip).Take(dModel.dataTableParams.take).ToList();
             rResult.recordsFiltered = _signed.Count();
-            List<LanguageResourcesVM> list = new List<LanguageResourcesVM>();
-            LanguageResourcesVM model = new LanguageResourcesVM();
+            List<ResourcesVM> list = new List<ResourcesVM>();
+            ResourcesVM model = new ResourcesVM();
 
             foreach (var item in _signed)
             {
-                model = new LanguageResourcesVM();
+                model = new ResourcesVM();
                 model.ID = item.Id;
                 model.LanguageID = item.LangId;
                 model.KeyName = item.KeyName;
@@ -186,17 +186,17 @@ namespace JsLocalization.Services
             return rResult;
         }
 
-        public IQueryable<DbLanguageResource> GetAllAsIQueryable()
+        public IQueryable<Resource> GetAllAsIQueryable()
         => _repository.GetAsIQueryable();
 
-        public List<DbLanguageResource> GetByFormCollection(IFormCollection form)
+        public List<Resource> GetByFormCollection(IFormCollection form)
         {
-            List<DbLanguageResource> result = new List<DbLanguageResource>();
+            List<Resource> result = new List<Resource>();
             var spLang = _spLanguagesService.GetAllAsIQueryable();
             var KeyName = form["KeyName"].FirstOrDefault();
             foreach (var item in spLang)
             {
-                var one = new DbLanguageResource();
+                var one = new Resource();
                 one.KeyName = KeyName;
                 one.LangId = item.Id;
                 one.Value = form["Value_" + item.Code];
@@ -204,7 +204,7 @@ namespace JsLocalization.Services
             }
             return result;
         }
-        public int CreateRange(List<DbLanguageResource> model)
+        public int CreateRange(List<Resource> model)
         {
             return _repository.AddRange(model);
         }

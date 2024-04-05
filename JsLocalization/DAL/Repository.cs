@@ -17,10 +17,10 @@ namespace JsLocalization.DAL
     }
     public class Repository<T> : IRepository<T> where T : BaseEntity
     {
-        private readonly LanguageDbContext context;
+        private readonly LocalizationContext context;
         private DbSet<T> entities;
         string errorMessage = string.Empty;
-        public Repository(LanguageDbContext context)
+        public Repository(LocalizationContext context)
         {
             this.context = context;
             entities = context.Set<T>();
@@ -91,7 +91,6 @@ namespace JsLocalization.DAL
         public int Count(Expression<Func<T, bool>> predicate)
         {
             return context.Set<T>().Where(predicate).Count();
-        }
-        
+        }        
     }
 }

@@ -3,30 +3,30 @@ using JsLocalization.Models;
 
 namespace JsLocalization.Services
 {
-    public interface ISpLanguagesService
+    public interface ICultureService
     {
-        SpLanguage GetByID(int id);
-        bool Create(SpLanguage role);
-        bool Update(SpLanguage role);
+        Culture GetByID(int id);
+        bool Create(Culture role);
+        bool Update(Culture role);
         bool Delete(int id);
-        IQueryable<SpLanguage> GetAllAsIQueryable();
+        IQueryable<Culture> GetAllAsIQueryable();
     }
-    public class SpLanguagesService : ISpLanguagesService
+    public class CultureService : ICultureService
     {
-        IRepository<SpLanguage> _repository;
+        IRepository<Culture> _repository;
 
-        public SpLanguagesService(IRepository<SpLanguage> repository)
+        public CultureService(IRepository<Culture> repository)
         {
             _repository = repository;
         }
 
-        public SpLanguage GetByID(int id)
+        public Culture GetByID(int id)
         {
             var rep = _repository.Get(id);
             return rep;
         }
 
-        public bool Create(SpLanguage model)
+        public bool Create(Culture model)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace JsLocalization.Services
             }
         }
 
-        public bool Update(SpLanguage model)
+        public bool Update(Culture model)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace JsLocalization.Services
             }
         }
 
-        public IQueryable<SpLanguage> GetAllAsIQueryable()
+        public IQueryable<Culture> GetAllAsIQueryable()
         =>_repository.GetAsIQueryable();
     }
 }
