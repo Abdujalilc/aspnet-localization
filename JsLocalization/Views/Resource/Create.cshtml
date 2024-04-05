@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Lang" class="control-label"></label>
-                <select class="form-control select2" id="@Model.LangId" name="@Model.LangId" >
+                <select class="form-control select2" asp-for="@Model.LangId" >
                     <option value="">Select Culture</option>
                     <option value="3">English</option>
                     <option value="2">Russian</option>
