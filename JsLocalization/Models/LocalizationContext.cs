@@ -8,7 +8,7 @@ namespace JsLocalization.Models
         {
             //Database.EnsureCreated();
         }
-        public DbSet<Resource> DbLanguageResources { get; set; }
-        public DbSet<Culture> SpLanguages { get; set; }
+        public DbSet<Resource> Resources { get; set; }
+        public DbSet<Culture> Cultures { get; set; }
     }
 }

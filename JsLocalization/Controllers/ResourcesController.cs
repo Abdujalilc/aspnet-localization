@@ -9,27 +9,27 @@ namespace JsLocalization.Controllers
 {
     public class ResourcesController : Controller
     {
-        private readonly ResourcesService _dbLanguageResourcesService;
+        private readonly ResourcesService _resourcesService;
         private readonly IDataTableInputParamsService _dataTableInputParamsService;
-        private readonly ICultureService _spLanguagesService;
+        private readonly ICultureService _cultureService;
 
-        public ResourcesController(ResourcesService dbLanguageResourcesService, IDataTableInputParamsService dataTableInputParamsService, ICultureService spLanguagesService)
+        public ResourcesController(ResourcesService resourcesService, IDataTableInputParamsService dataTableInputParamsService, ICultureService cultureService)
         {
-            _dbLanguageResourcesService = dbLanguageResourcesService;
+            _resourcesService = resourcesService;
             _dataTableInputParamsService = dataTableInputParamsService;
-            _spLanguagesService = spLanguagesService;
+            _cultureService = cultureService;
         }
         public IActionResult Index()
         {
-            ViewBag.LanguageList = _spLanguagesService.GetAllAsIQueryable().Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name }).ToList();
+            ViewBag.LanguageList = _cultureService.GetAllAsIQueryable().Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name }).ToList();
             return View();
         }
         [HttpPost]
-        public IActionResult LanguageResourcesRead(IFormCollection form, SearchLanguageResourcesVM dModel)
+        public IActionResult ResourcesRead(IFormCollection form, SearchResourcesVM dModel)
         {
             dModel.dataTableParams = new DataTableInputParams();
             dModel.dataTableParams = _dataTableInputParamsService.ToModel(form);
-            var rResult = _dbLanguageResourcesService.LanguageResourcesList(dModel);
+            var rResult = _resourcesService.ResourcesList(dModel);
             return Json(new { recordsFiltered = rResult.recordsTotal, recordsTotal = rResult.recordsFiltered, data = rResult.data });
         }
         public IActionResult Create()
@@ -40,24 +40,24 @@ namespace JsLocalization.Controllers
         [HttpPost]
         public IActionResult Create(Resource model)
         {
-            _dbLanguageResourcesService.Create(model);
+            _resourcesService.Create(model);
             return RedirectToAction("Index", "Resources");
         }
         public IActionResult CreateRange()
         {            
-            var model = _spLanguagesService.GetAllAsIQueryable();
+            var model = _cultureService.GetAllAsIQueryable();
             return View(model);
         }
         [HttpPost]
         public IActionResult CreateRange(IFormCollection form)
         {
-            var models=_dbLanguageResourcesService.GetByFormCollection(form);
-            var insertedCount=_dbLanguageResourcesService.CreateRange(models);
+            var models=_resourcesService.GetByFormCollection(form);
+            var insertedCount=_resourcesService.CreateRange(models);
             return RedirectToAction("Index", "Resources");
         }
         public IActionResult Edit(int id)
         {
-            var entModel = _dbLanguageResourcesService.GetByID(id);
+            var entModel = _resourcesService.GetByID(id);
             if (entModel == null) return RedirectToAction("Index", "Resources");
 
             return View(entModel);
@@ -65,12 +65,12 @@ namespace JsLocalization.Controllers
         [HttpPost]
         public IActionResult Edit(Resource model)
         {
-            _dbLanguageResourcesService.Update(model);
+            _resourcesService.Update(model);
             return RedirectToAction("Index", "Resources");
         }
         public IActionResult PublishLanguage()
         {
-            _dbLanguageResourcesService.PublishLanguageNew();
+            _resourcesService.PublishLanguageNew();
             return RedirectToAction("Index", "Resources");
         }
         public IActionResult ChangeCulture(string lang, string returnUrl)

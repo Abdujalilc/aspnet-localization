@@ -1,7 +1,6 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
 <div class="row mb-2">
     <div class="col-lg-12">
         <a href="/Resources/Create" class="btn btn-primary float-start lang m-2" key="Create">Create Single</a>
@@ -10,13 +9,13 @@
     </div>
 </div>
 <hr />
-<table id="example" class="table table-striped" style="width:100%">
+<table id="tblResources" class="table table-striped" style="width:100%">
     <thead>
         <tr>
             <th>Id</th>
             <th class="lang" key="KeyName"></th>
             <th class="lang" key="Value">Value</th>
-            <th class="lang" key="languageName">Language type</th>
+            <th class="lang" key="CultureName">Culture type</th>
             <th></th>
         </tr>
     </thead>
@@ -36,7 +35,7 @@
                 "pageLength": 20,
                 "lengthMenu": [10, 20, 50, 75, 100],
                 "ajax": {
-                    "url": "/Resources/LanguageResourcesRead",
+                    "url": "/Resources/ResourcesRead",
                     "type": "POST",
                     "datatype": "json",
                     "data": function (d) {
@@ -61,7 +60,7 @@
 
         });
         function filterLanguage() {
-            $('#example').DataTable().ajax.reload();
+            $('#tblResources').DataTable().ajax.reload();
         }
     </script>
 }

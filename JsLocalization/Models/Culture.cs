@@ -6,7 +6,7 @@ namespace JsLocalization.Models
     {
         public Culture()
         {
-            DbLanguageResources = new HashSet<Resource>();
+            Resources = new HashSet<Resource>();
         }
 
         public int Id { get; set; }
@@ -14,7 +14,7 @@ namespace JsLocalization.Models
         public string Name { get; set; }
         public bool? IsActive { get; set; }
 
-        public virtual ICollection<Resource> DbLanguageResources { get; set; }
+        public virtual ICollection<Resource> Resources { get; set; }
     }
     public partial class Culture:BaseEntity
     {

@@ -11,7 +11,7 @@
     }
 
     string directory = System.IO.Path.GetFullPath("wwwroot");
-    string languageTokenFile = "/js/languageresourse/LanguageVersion.txt";
+    string languageTokenFile = "/js/Localization/LastUpdateVersion.txt";
     string languageToken = Guid.NewGuid().ToString();
     if (File.Exists(directory + languageTokenFile))
     {

@@ -13,7 +13,7 @@ namespace JsLocalization.Services
         bool Update(Resource role);
         bool Delete(int id);
         string PublishLanguage();
-        DataTableOutputParams<ResourcesVM> LanguageResourcesList(SearchLanguageResourcesVM dModel);
+        DataTableOutputParams<ResourcesVM> ResourcesList(SearchResourcesVM dModel);
         void PublishLanguageNew();
         IQueryable<Resource> GetAllAsIQueryable();
         List<Resource> GetByFormCollection(IFormCollection form);
@@ -21,12 +21,12 @@ namespace JsLocalization.Services
     public class ResourcesService : IResourcesService
     {
         IRepository<Resource> _repository;
-        private readonly ICultureService _spLanguagesService;
+        private readonly ICultureService _cultureService;
 
-        public ResourcesService(IRepository<Resource> repository, ICultureService spLanguagesService)
+        public ResourcesService(IRepository<Resource> repository, ICultureService cultureService)
         {
             _repository = repository;
-            _spLanguagesService = spLanguagesService;
+            _cultureService = cultureService;
         }
 
         public Resource GetByID(int id)
@@ -84,7 +84,7 @@ namespace JsLocalization.Services
         }
         public string PublishLanguage()
         {
-            string folder = Path.GetFullPath("wwwroot/js/LanguageResourse/");
+            string folder = Path.GetFullPath("wwwroot/js/Localization/");
            
             var lan = GetAllAsIQueryable().Where(x => x.LangId == 1).Select(x => new { key = x.KeyName, value = x.Value }).ToList();
             var json = "LanguageDataUZ=" + JsonSerializer.Serialize(lan);
@@ -108,8 +108,8 @@ namespace JsLocalization.Services
         }
         public void PublishLanguageNew()
         {
-            string folder = Path.GetFullPath("wwwroot/js/LanguageResourse/");
-            var languageType = _spLanguagesService.GetAllAsIQueryable().Where(x => x.IsActive == true).ToList();
+            string folder = Path.GetFullPath("wwwroot/js/Localization/");
+            var languageType = _cultureService.GetAllAsIQueryable().Where(x => x.IsActive == true).ToList();
             var languageAll = GetAllAsIQueryable().Select(x => new { KeyName = x.KeyName, Value = x.Value, LangID = x.LangId }).ToList();
             string fileName = "";
             string fullPath = "";
@@ -131,9 +131,9 @@ namespace JsLocalization.Services
             fileName = "LanguageArray.js";
             fullPath = folder + fileName;
             File.WriteAllText(fullPath, jSONText);
-            File.WriteAllText(folder + "/LanguageVersion.txt", Guid.NewGuid().ToString());
+            File.WriteAllText(folder + "/LastUpdateVersion.txt", Guid.NewGuid().ToString());
         }
-        public DataTableOutputParams<ResourcesVM> LanguageResourcesList(SearchLanguageResourcesVM dModel)
+        public DataTableOutputParams<ResourcesVM> ResourcesList(SearchResourcesVM dModel)
         {
             DataTableOutputParams<ResourcesVM> rResult = new DataTableOutputParams<ResourcesVM>();
             var lanRes = GetAllAsIQueryable().IncludeMultiple(p => p.Lang);
@@ -192,7 +192,7 @@ namespace JsLocalization.Services
         public List<Resource> GetByFormCollection(IFormCollection form)
         {
             List<Resource> result = new List<Resource>();
-            var spLang = _spLanguagesService.GetAllAsIQueryable();
+            var spLang = _cultureService.GetAllAsIQueryable();
             var KeyName = form["KeyName"].FirstOrDefault();
             foreach (var item in spLang)
             {
