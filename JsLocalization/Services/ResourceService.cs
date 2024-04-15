@@ -13,7 +13,7 @@ namespace JsLocalization.Services
         bool Update(Resource role);
         bool Delete(int id);
         DataTableOutputParams<ResourceVM> ResourceList(SearchResourceVM dModel);
-        void UpdateResourceFIle();
+        void UpdateResourceFile();
         IQueryable<Resource> GetAllAsIQueryable();
         List<Resource> GetByFormCollection(IFormCollection form);
     }
@@ -81,7 +81,7 @@ namespace JsLocalization.Services
                 return false;
             }
         }
-        public void UpdateResourceFIle()
+        public void UpdateResourceFile()
         {
             string folder = Path.GetFullPath("wwwroot/js/Localization/");
             var languageType = _cultureService.GetAllAsIQueryable().Where(x => x.IsActive == true).ToList();

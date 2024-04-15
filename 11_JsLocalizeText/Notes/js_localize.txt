@@ -1,0 +1,16 @@
+<div class="lang" key="Dashboard"></div>
+
+
+INSERT INTO Cultures (ID, Code, Name, IsActive) VALUES (1, 'uz', 'Uzbek', 1);
+INSERT INTO Cultures (ID, Code, Name, IsActive) VALUES (2, 'ru', 'Russian', 1);
+INSERT INTO Cultures (ID, Code, Name, IsActive) VALUES (3, 'en', 'English', 1);
+
+INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (1, 'Dashboard', 'Ma’lumotlar panel', 1);
+INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (2, 'Dashboard', 'Информационная панель', 2);
+INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (3, 'Dashboard', 'Dashboard', 3);
+INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (4, 'KeyName', 'Ключевое слово', 2);
+INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (5, 'KeyName', 'Key Name', 3);
+INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (6, 'KeyName', 'Kalit so‘z', 1);
+INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (7, 'create', 'Qo''shish', 1);
+INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (8, 'create', 'Добавить', 2);
+INSERT INTO Resources (ID, KeyName, Value, LangID) VALUES (9, 'create', 'Create', 3);
