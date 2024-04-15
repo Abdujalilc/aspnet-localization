@@ -1,11 +1,11 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "_Layout";
 }
 <div class="row mb-2">
     <div class="col-lg-12">
-        <a href="/Resource/Create" class="btn btn-primary float-start lang m-2" key="create">Create Single</a>
-        <a href="/Resource/CreateRange" class="btn btn-primary float-start lang m-2" key="createRange">Create Range</a>
-        <a href="/Resource/UpdateResource" class="btn btn-primary float-end lang"  key="updateResource">Update Resource</a>
+        <a href="/Resource/Create" class="btn btn-primary float-start localizedText m-2">Create</a>
+        <a href="/Resource/CreateRange" class="btn btn-primary float-start localizedText m-2">Create Range</a>
     </div>
 </div>
 <hr />
@@ -13,9 +13,9 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th class="lang" key="KeyName"></th>
-            <th class="lang" key="Value">Value</th>
-            <th class="lang" key="CultureName">Culture type</th>
+            <th class="localizedText">Key Word</th>
+            <th class="localizedText">Value</th>
+            <th class="localizedText">Culture Name</th>
             <th></th>
         </tr>
     </thead>
@@ -25,39 +25,53 @@
 {
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#tblResources").DataTable({
-                "responsive": true,
-                "lengthChange": true, "autoWidth": false,
-                "processing": true,
-                "serverSide": true,
-                "filter": true,
-                "orderMulti": false,
-                "pageLength": 20,
-                "lengthMenu": [10, 20, 50, 75, 100],
+            var culture = $("#cultureName").val();
+            var options = {
                 "ajax": {
-                    "url": "/Resource/ResourceRead",
-                    "type": "POST",
-                    "datatype": "json",
-                    "data": function (d) {
-                    }
+                    "type": 'GET',
+                    "dataType": 'json',
+                    "async": false,
+                    "url": "/js/localization/datatable/resource.json",
                 },
-                "order": [0, "desc"],
+                "order": [0, "asc"],
                 "columns": [
-                    { "data": "id", "name": "ID", "autoWidth": true },
-                    { "data": "keyName", "name": "KeyName", "autoWidth": true },
-                    { "data": "value", "name": "Value", "autoWidth": true },
-                    { "data": "languageName", "name": "LanguageName", "autoWidth": true },
+                    { "data": "ID", "name": "ID", "autoWidth": true },
+                    { "data": "KeyName", "name": "KeyName", "autoWidth": true },
+                    { "data": "Value", "name": "Value", "autoWidth": true },
+                    { "data": "LanguageName", "name": "LanguageName", "autoWidth": true },
                     {
                         "data": null,
                         "name": "ID",
                         "render": function (data, type, row) {
-                            return '<a href="/Resource/Edit?id=' + row.id + '" style="cursor:pointer;">Edit</a>'
+                            var editText = {
+                                "en": "Edit",
+                                "ru": "Редактировать",
+                                "uz": "Tahrirlash",
+                            };
+                            var translation = editText[culture] || "Edit";
+                            return '<a href="#">' + translation + '</a>';
                         },
                         "sort": false
                     },
                 ]
-            });
+            };
 
+            if (culture !== 'en') {
+                options.language = {
+                    "url": "/js/localization/datatable/" + culture + ".json"
+                };
+            }
+
+            var table = $("#tblResources").DataTable(options);
+
+            $('#tblResources').find('th.localizedText').each(function (index, element) {
+                var text = $(this).text().trim();
+                var translatedText = resourceArray[culture][text];
+
+                if (translatedText) {
+                    $(this).text(translatedText);
+                }
+            });
         });
         function filterLanguage() {
             $('#tblResources').DataTable().ajax.reload();

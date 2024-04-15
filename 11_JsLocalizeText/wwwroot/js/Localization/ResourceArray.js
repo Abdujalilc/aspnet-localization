@@ -1,1 +1,22 @@
-var resourceArray = {"uz":{"KeyName":"Kalit so‘z","create":"Qo'shish","createRange":"Diapazon yaratish"},"ru":{"KeyName":"Ключевое слово","create":"Добавить","createRange":"Sozdat Diapazon"},"en":{"KeyName":"Key Name","create":"Create","createRange":"Create Range"}}  
+var resourceArray = {
+    "uz": {
+        "Key Word": "Kalit so‘z",
+        "Value": "Qiymat",
+        "Culture Name": "Til nomi",
+        "Create": "Qo'shish",
+        "Create Range": "Diapazon yaratish",
+        "Language": "Til",
+        "Localization": "Mahalliylashtirish",
+        "Welcome":"Hush kelibsiz"
+    },
+    "ru": {
+        "Key Word": "Ключевое слово",
+        "Value": "Значения",
+        "Culture Name": "Название культур",
+        "Create": "Добавить",
+        "Create Range": "Sozdat Diapazon",
+        "Language": "Язык",
+        "Localization": "Локализация",
+        "Welcome":"Добро пожаловать"
+    }
+}  
