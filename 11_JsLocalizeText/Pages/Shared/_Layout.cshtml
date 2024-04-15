@@ -1,4 +1,5 @@
 ﻿@using System.IO;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     var httpContext = ViewContext.HttpContext;
     var cookie = httpContext.Request.Cookies["culture"];
@@ -24,6 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Localization</title>
     <link href="~/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/data-tables/jquery.dataTables.min.css" rel="stylesheet" />
 </head>
 <body>
     <input type="hidden" id="cultureName" value='@cultureName' />

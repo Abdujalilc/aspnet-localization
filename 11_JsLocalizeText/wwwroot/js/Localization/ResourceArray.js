@@ -14,7 +14,7 @@ var resourceArray = {
         "Value": "Значения",
         "Culture Name": "Название культур",
         "Create": "Добавить",
-        "Create Range": "Sozdat Diapazon",
+        "Create Range": "Создать диапозон",
         "Language": "Язык",
         "Localization": "Локализация",
         "Welcome":"Добро пожаловать"
