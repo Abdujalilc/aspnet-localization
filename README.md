@@ -4,7 +4,7 @@ This repository contains various implementations of localization in ASP.NET appl
 
 ## Project Structure
 
-- **11_JsLocalizeText/** - JavaScript text localization.
+- **JsLocalizeText/** - JavaScript text localization.
 - **AttributeLocalization/** - Attribute-based localization.
 - **CultureIdentify/** - Identifying culture settings in ASP.NET.
 - **EFlocalizationApp/** - Entity Framework-based localization.
