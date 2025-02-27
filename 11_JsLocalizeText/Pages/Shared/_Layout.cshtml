@@ -1,0 +1,72 @@
+﻿@using System.IO;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    var httpContext = ViewContext.HttpContext;
+    var cookie = httpContext.Request.Cookies["culture"];
+    string cultureName = "uz";
+
+    if (!string.IsNullOrEmpty(cookie))
+    {
+        cultureName = cookie;
+    }
+
+    string web_root = System.IO.Path.GetFullPath("wwwroot");
+    string resourceVersion = "/js/Localization/LastUpdateVersion.txt";
+    string versionGUID = Guid.NewGuid().ToString();
+    if (File.Exists(web_root + resourceVersion))
+    {
+        versionGUID = File.ReadAllText(web_root + resourceVersion);
+    }
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Localization</title>
+    <link href="~/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/data-tables/jquery.dataTables.min.css" rel="stylesheet" />
+</head>
+<body>
+    <input type="hidden" id="cultureName" value='@cultureName' />
+    <style>
+        .max-button {
+            width: 200px
+        }
+    </style>
+    <div>
+        <partial name="_CultureListPartial" for="@cultureName" />
+    </div>
+    <div class="row m-1 p-1">
+        <div id="categories" class="col-3">
+            <div class="btn-group" name="examples1">
+                <button class="btn btn-secondary btn-lg max-button localizedText" type="button">
+                    Localization
+                </button>
+                <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </button>
+                <div class="dropdown-menu">
+                    <a class="btn btn-secondary d-block" href="/Resource/Index">
+                        LanguageResources
+                    </a>
+                    <a class="btn btn-secondary d-block" href="/testroute/testaction">
+                        Test02
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            @RenderBody()
+        </div>
+        <div id="_SiteScripts" class="hidden">
+            <script src="~/jquery/jquery.min.js"></script>
+            <script src="~/bootstrap/popper.min.js"></script>
+            <script src="~/bootstrap/bootstrap.min.js"></script>
+            <script src="~/data-tables/jquery.dataTables.min.js"></script>
+        </div>
+        <script src="~/js/Localization/ResourceArray.js?q=@versionGUID"></script>
+        <script src="~/js/Localization/localize-text.js?q=@versionGUID"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </div>
+</body>
+</html>

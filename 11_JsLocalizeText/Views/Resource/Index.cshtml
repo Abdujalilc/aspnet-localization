@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "_Layout";
+}
+<div class="row mb-2">
+    <div class="col-lg-12">
+        <a href="#" class="btn btn-primary float-start localizedText m-2">Create</a>
+        <a href="#" class="btn btn-primary float-start localizedText m-2">Create Range</a>
+    </div>
+</div>
+<hr />
+<table id="tblResources" class="table table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th class="localizedText">Key Word</th>
+            <th class="localizedText">Value</th>
+            <th class="localizedText">Culture Name</th>
+            <th></th>
+        </tr>
+    </thead>
+</table>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var culture = $("#cultureName").val();
+            var options = {
+                "ajax": {
+                    "type": 'GET',
+                    "dataType": 'json',
+                    "async": false,
+                    "url": "/js/localization/datatable/resource.json",
+                },
+                "order": [0, "asc"],
+                "columns": [
+                    { "data": "ID", "name": "ID", "autoWidth": true },
+                    { "data": "KeyName", "name": "KeyName", "autoWidth": true },
+                    { "data": "Value", "name": "Value", "autoWidth": true },
+                    { "data": "LanguageName", "name": "LanguageName", "autoWidth": true },
+                    {
+                        "data": null,
+                        "name": "ID",
+                        "render": function (data, type, row) {
+                            var editText = {
+                                "en": "Edit",
+                                "ru": "Редактировать",
+                                "uz": "Tahrirlash",
+                            };
+                            var translation = editText[culture] || "Edit";
+                            return '<a href="#">' + translation + '</a>';
+                        },
+                        "sort": false
+                    },
+                ]
+            };
+
+            if (culture !== 'en') {
+                options.language = {
+                    "url": "/js/localization/datatable/" + culture + ".json"
+                };
+            }
+
+            var table = $("#tblResources").DataTable(options);
+
+            $('#tblResources').find('th.localizedText').each(function (index, element) {
+                var text = $(this).text().trim();
+                var translatedText = resourceArray[culture][text];
+
+                if (translatedText) {
+                    $(this).text(translatedText);
+                }
+            });
+        });
+    </script>
+}

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 
-namespace EFLocalizationApp
+namespace Services
 {
     public class EFStringLocalizerFactory : IStringLocalizerFactory
     {
@@ -24,11 +24,8 @@ namespace EFLocalizationApp
 
         private IStringLocalizer CreateStringLocalizer()
         {
-            LocalizationContext _db = new LocalizationContext(
-                new DbContextOptionsBuilder<LocalizationContext>()
-                    .UseSqlServer(_connectionString)
-                    .Options);
-            // инициализация базы данных
+            LocalizationContext _db = new LocalizationContext(new DbContextOptionsBuilder<LocalizationContext>().UseSqlite(_connectionString).Options);
+            // seed DB
             if (!_db.Cultures.Any())
             {
                 _db.AddRange(
@@ -37,8 +34,8 @@ namespace EFLocalizationApp
                         Name = "en",
                         Resources = new List<Resource>()
                         {
-                            new Resource { Key = "Header", Value = "Hello" },
-                            new Resource { Key = "Message", Value = "Welcome" }
+                            new Resource { Key = "Hello", Value = "Hello" },
+                            new Resource { Key = "Welcome", Value = "Welcome" }
                         }
                     },
                     new Culture
@@ -46,8 +43,8 @@ namespace EFLocalizationApp
                         Name = "ru",
                         Resources = new List<Resource>()
                         {
-                            new Resource { Key = "Header", Value = "Привет" },
-                            new Resource { Key = "Message", Value = "Добро пожаловать" }
+                            new Resource { Key = "Hello", Value = "Привет" },
+                            new Resource { Key = "Welcome", Value = "Добро пожаловать" }
                         }
                     },
                     new Culture
@@ -55,8 +52,8 @@ namespace EFLocalizationApp
                         Name = "de",
                         Resources = new List<Resource>()
                         {
-                            new Resource { Key = "Header", Value = "Hallo" },
-                            new Resource { Key = "Message", Value = "Willkommen" }
+                            new Resource { Key = "Hello", Value = "Hallo" },
+                            new Resource { Key = "Welcome", Value = "Willkommen" }
                         }
                     }
                 );

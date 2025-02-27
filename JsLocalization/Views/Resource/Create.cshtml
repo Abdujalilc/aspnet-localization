@@ -1,0 +1,40 @@
+﻿@model JsLocalization.Models.Resource
+
+<h4>
+    Create - Resource
+</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.KeyName" class="control-label"></label>
+                <input asp-for="@Model.KeyName" class="form-control" />
+                <span asp-validation-for="@Model.KeyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Value" class="control-label"></label>
+                <input asp-for="@Model.Value" class="form-control" />
+                <span asp-validation-for="@Model.Value" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lang" class="control-label"></label>
+                <select class="form-control select2" asp-for="@Model.LangId" >
+                    <option value="">Select Culture</option>
+                    <option value="3">English</option>
+                    <option value="2">Russian</option>
+                    <option value="1">Uzbek</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

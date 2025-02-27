@@ -1,11 +1,9 @@
 ﻿using EFLocalizationApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 
-namespace EFLocalizationApp
+namespace Services
 {
     public class EFStringLocalizer : IStringLocalizer
     {

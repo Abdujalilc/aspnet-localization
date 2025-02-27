@@ -1,0 +1,144 @@
+{
+    "data": [
+        {
+            "ID": 1,
+            "KeyName": "cultureName",
+            "Value": "Culture Name",
+            "LanguageID": 3,
+            "LanguageName": "English"
+        },
+        {
+            "ID": 2,
+            "KeyName": "cultureName",
+            "Value": "Название культур",
+            "LanguageID": 2,
+            "LanguageName": "Russian"
+        },
+        {
+            "ID": 3,
+            "KeyName": "cultureName",
+            "Value": "Til nomi",
+            "LanguageID": 1,
+            "LanguageName": "Uzbek"
+        },
+        {
+            "ID": 4,
+            "KeyName": "value",
+            "Value": "Value",
+            "LanguageID": 3,
+            "LanguageName": "English"
+        },
+        {
+            "ID": 5,
+            "KeyName": "value",
+            "Value": "Значение",
+            "LanguageID": 2,
+            "LanguageName": "Russian"
+        },
+        {
+            "ID": 6,
+            "KeyName": "value",
+            "Value": "Qiymat",
+            "LanguageID": 1,
+            "LanguageName": "Uzbek"
+        },
+        {
+            "ID": 7,
+            "KeyName": "edit",
+            "Value": "Edit",
+            "LanguageID": 3,
+            "LanguageName": "English"
+        },
+        {
+            "ID": 8,
+            "KeyName": "edit",
+            "Value": "Редактировать",
+            "LanguageID": 2,
+            "LanguageName": "Russian"
+        },
+        {
+            "ID": 9,
+            "KeyName": "edit",
+            "Value": "Tahrirlash",
+            "LanguageID": 1,
+            "LanguageName": "Uzbek"
+        },
+        {
+            "ID": 10,
+            "KeyName": "keyWord",
+            "Value": "Key Word",
+            "LanguageID": 3,
+            "LanguageName": "English"
+        },
+        {
+            "ID": 11,
+            "KeyName": "keyWord",
+            "Value": "Ключевое слово",
+            "LanguageID": 2,
+            "LanguageName": "Russian"
+        },
+        {
+            "ID": 12,
+            "KeyName": "keyWord",
+            "Value": "Kalit So'z",
+            "LanguageID": 1,
+            "LanguageName": "Uzbek"
+        },
+        {
+            "ID": 13,
+            "KeyName": "updateResource",
+            "Value": "Update Resource",
+            "LanguageID": 3,
+            "LanguageName": "English"
+        },
+        {
+            "ID": 14,
+            "KeyName": "updateResource",
+            "Value": "Обновить ресурс",
+            "LanguageID": 2,
+            "LanguageName": "Russian"
+        },
+        {
+            "ID": 15,
+            "KeyName": "updateResource",
+            "Value": "Resursni yangilash",
+            "LanguageID": 1,
+            "LanguageName": "Uzbek"
+        },
+        {
+            "ID": 16,
+            "KeyName": "language",
+            "Value": "Language",
+            "LanguageID": 3,
+            "LanguageName": "English"
+        },
+        {
+            "ID": 17,
+            "KeyName": "language",
+            "Value": "Язык",
+            "LanguageID": 2,
+            "LanguageName": "Russian"
+        },
+        {
+            "ID": 18,
+            "KeyName": "language",
+            "Value": "Til",
+            "LanguageID": 1,
+            "LanguageName": "Uzbek"
+        },
+        {
+            "ID": 19,
+            "KeyName": "createRange",
+            "Value": "Create Range",
+            "LanguageID": 3,
+            "LanguageName": "English"
+        },
+        {
+            "ID": 20,
+            "KeyName": "createRange",
+            "Value": "Создать диапозон",
+            "LanguageID": 2,
+            "LanguageName": "Russian"
+        }
+    ]
+}

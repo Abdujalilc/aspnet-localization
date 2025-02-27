@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace EFLocalizationApp.Models
+namespace JsLocalization.Models
 {
     public class LocalizationContext : DbContext
     {
         public LocalizationContext(DbContextOptions<LocalizationContext> options) : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
-        public DbSet<Culture> Cultures { get; set; }
         public DbSet<Resource> Resources { get; set; }
+        public DbSet<Culture> Cultures { get; set; }
     }
 }

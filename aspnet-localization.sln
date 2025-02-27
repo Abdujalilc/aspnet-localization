@@ -15,9 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04_ViewLocalization", "View
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06_SwitchLocalization", "SwitchLocalization\06_SwitchLocalization.csproj", "{535242EE-57D2-4914-BDDE-CC72CFCE2161}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_SharedResources", "SharedResources\07_SharedResources.csproj", "{2BC34CDD-6801-4BB5-9E61-35B3C5D75332}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07_SharedResources", "SharedResources\07_SharedResources.csproj", "{2BC34CDD-6801-4BB5-9E61-35B3C5D75332}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09_EFLocalizationApp", "EFLocalizationApp\09_EFLocalizationApp.csproj", "{FD2A4628-36E7-46A0-A705-E2A13F6963E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09_EFLocalizationApp", "EFLocalizationApp\09_EFLocalizationApp.csproj", "{FD2A4628-36E7-46A0-A705-E2A13F6963E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10_JsLocalization", "JsLocalization\10_JsLocalization.csproj", "{1A9A4021-968E-4E52-AAF8-221EB351B807}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_JsLocalizeText", "11_JsLocalizeText\11_JsLocalizeText.csproj", "{EDE5CD06-E943-4410-9758-FC8848B2C58E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,14 @@ Global
 		{FD2A4628-36E7-46A0-A705-E2A13F6963E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD2A4628-36E7-46A0-A705-E2A13F6963E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD2A4628-36E7-46A0-A705-E2A13F6963E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A9A4021-968E-4E52-AAF8-221EB351B807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A9A4021-968E-4E52-AAF8-221EB351B807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A9A4021-968E-4E52-AAF8-221EB351B807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A9A4021-968E-4E52-AAF8-221EB351B807}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDE5CD06-E943-4410-9758-FC8848B2C58E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDE5CD06-E943-4410-9758-FC8848B2C58E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDE5CD06-E943-4410-9758-FC8848B2C58E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDE5CD06-E943-4410-9758-FC8848B2C58E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
