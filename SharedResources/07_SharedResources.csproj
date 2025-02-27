@@ -1,9 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
-
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+	<PropertyGroup>
+		<EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+	</PropertyGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Resources\SharedResource.resx" />
+		<EmbeddedResource Include="Resources\SharedResource.en.resx" />
+		<EmbeddedResource Include="Resources\SharedResource.ru.resx" />
+		<EmbeddedResource Include="Resources\SharedResource.de.resx" />
+	</ItemGroup>
 </Project>

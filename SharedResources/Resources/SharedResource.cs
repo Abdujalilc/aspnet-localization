@@ -1,4 +1,4 @@
-﻿namespace SharedResources
+﻿namespace Resources
 {
     public class SharedResource
     {

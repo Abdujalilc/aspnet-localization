@@ -1,15 +1,15 @@
 using Microsoft.AspNetCore.Localization;
-using SharedResources;
+using Resources;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+builder.Services.AddLocalization();
 builder.Services.AddControllersWithViews()
     .AddDataAnnotationsLocalization(options =>
     {
         options.DataAnnotationLocalizerProvider = (type, factory) =>
-            factory.Create(typeof(SharedResources.SharedResource)); // Ensure this matches the correct namespace
+            factory.Create(typeof(SharedResource)); // Ensure this matches the correct namespace
     })
     .AddViewLocalization();
 
