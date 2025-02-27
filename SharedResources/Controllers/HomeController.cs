@@ -14,22 +14,19 @@ namespace SharedResources.Controllers
         {
             _sharedLocalizer = sharedLocalizer;
         }
-
         public IActionResult Index()
         {
-            foreach (var item in _sharedLocalizer.GetAllStrings())
-            {
+            /* for debug
+             foreach (var item in _sharedLocalizer.GetAllStrings())
                 Console.WriteLine($"Key: {item.Name}, Value: {item.Value}");
-            }
 
             var culture = HttpContext.Features.Get<IRequestCultureFeature>()?.RequestCulture.Culture.Name;
             Console.WriteLine($"Current Culture: {culture}");
 
-            // Debug output
             Console.WriteLine($"Localized Welcome: {_sharedLocalizer["Welcome"].Value}");
+             */            
 
             string message = _sharedLocalizer["Welcome"].Value;
-
             return View("Index", message);
         }
     }

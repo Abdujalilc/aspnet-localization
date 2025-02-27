@@ -4,9 +4,9 @@ using System.Globalization;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddLocalization();
-builder.Services.AddControllersWithViews().AddViewLocalization(); ;
+builder.Services.AddControllersWithViews().AddViewLocalization();
 
-var supportedCultures = new[] { new CultureInfo("en"), new CultureInfo("de"), new CultureInfo("ru") };
+CultureInfo[] supportedCultures = new[] { new CultureInfo("en"), new CultureInfo("de"), new CultureInfo("ru") };
 
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
