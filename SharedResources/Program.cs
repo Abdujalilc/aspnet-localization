@@ -6,21 +6,32 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 builder.Services.AddControllersWithViews()
-    .AddDataAnnotationsLocalization(options => {
+    .AddDataAnnotationsLocalization(options =>
+    {
         options.DataAnnotationLocalizerProvider = (type, factory) =>
-            factory.Create(typeof(SharedResource));
+            factory.Create(typeof(SharedResources.SharedResource)); // Ensure this matches the correct namespace
     })
     .AddViewLocalization();
 
+
+var supportedCultures = new[]
+{
+    new CultureInfo("en"),
+    new CultureInfo("de"),
+    new CultureInfo("ru")
+};
+
+var localizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture("ru"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures
+};
+
+localizationOptions.RequestCultureProviders.Insert(0, new QueryStringRequestCultureProvider());
+
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
-    var supportedCultures = new[]
-    {
-                    new CultureInfo("en"),
-                    new CultureInfo("de"),
-                    new CultureInfo("ru")
-                };
-
     options.DefaultRequestCulture = new RequestCulture("ru");
     options.SupportedCultures = supportedCultures;
     options.SupportedUICultures = supportedCultures;
@@ -28,16 +39,16 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
 
 var app = builder.Build();
 
-app.UseRequestLocalization();
-app.UseStaticFiles();
+app.UseRequestLocalization(); // Use configured localization
 
+app.UseStaticFiles();
 app.UseRouting();
 
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
+        pattern: "{controller=Home}/{action=Index}");
 });
 
 app.Run();

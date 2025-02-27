@@ -59,15 +59,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Hello" xml:space="preserve">
-    <value>Привет</value>
+    <value>Hello</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Добро пожаловать</value>
+    <value>Welcome</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Название</value>
+    <value>Name</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>Цена</value>
+    <value>Welcome</value>
   </data>
 </root>
