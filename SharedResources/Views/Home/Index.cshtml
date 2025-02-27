@@ -1,8 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
-
 @inject IHtmlLocalizer<Resources.SharedResource> SharedLocalizer
-
 @model string
 
+<a href="?culture=en">English</a> |
+<a href="?culture=ru">Русский</a> |
+<a href="?culture=de">Deutsch</a>
 <h3>@Model</h3>
 <h3>@SharedLocalizer["Hello"].Value</h3>

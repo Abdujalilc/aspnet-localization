@@ -1,54 +1,25 @@
 using Microsoft.AspNetCore.Localization;
-using Resources;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddLocalization();
-builder.Services.AddControllersWithViews()
-    .AddDataAnnotationsLocalization(options =>
-    {
-        options.DataAnnotationLocalizerProvider = (type, factory) =>
-            factory.Create(typeof(SharedResource)); // Ensure this matches the correct namespace
-    })
-    .AddViewLocalization();
+builder.Services.AddControllersWithViews().AddViewLocalization().AddDataAnnotationsLocalization(); ;
 
-
-var supportedCultures = new[]
-{
-    new CultureInfo("en"),
-    new CultureInfo("de"),
-    new CultureInfo("ru")
-};
-
-var localizationOptions = new RequestLocalizationOptions
-{
-    DefaultRequestCulture = new RequestCulture("ru"),
-    SupportedCultures = supportedCultures,
-    SupportedUICultures = supportedCultures
-};
-
-localizationOptions.RequestCultureProviders.Insert(0, new QueryStringRequestCultureProvider());
+var supportedCultures = new[] { new CultureInfo("en"), new CultureInfo("de"), new CultureInfo("ru") };
 
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
-    options.DefaultRequestCulture = new RequestCulture("ru");
+    options.DefaultRequestCulture = new RequestCulture("en");
     options.SupportedCultures = supportedCultures;
     options.SupportedUICultures = supportedCultures;
+    options.RequestCultureProviders.Insert(0, new QueryStringRequestCultureProvider());
 });
 
 var app = builder.Build();
 
-app.UseRequestLocalization(); // Use configured localization
-
-app.UseStaticFiles();
+app.UseRequestLocalization();
 app.UseRouting();
-
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}");
-});
+app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
 
 app.Run();

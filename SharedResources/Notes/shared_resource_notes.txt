@@ -1,4 +1,6 @@
-﻿https://metanit.com/sharp/aspnet5/28.8.php
+﻿https://localhost:7035/?culture=ru
+
+https://metanit.com/sharp/aspnet5/28.8.php
 
 <data name="Header" xml:space="preserve">
     <value>Привет</value>
@@ -12,3 +14,9 @@
 	<data name="Price" xml:space="preserve">
     <value>Цена</value>
   </data>
+
+--------------------------------------------
+
+1. Place SharedResources.cs in a folder called Resources.
+2. Place SharedResources.xx-yy.resx resource files in Resources folder too.
+3. Call services.AddLocalization() with no ResourcesPath option.

@@ -17,9 +17,6 @@ namespace SharedResources.Controllers
 
         public IActionResult Index()
         {
-            CultureInfo.CurrentCulture = new CultureInfo("ru");
-            CultureInfo.CurrentUICulture = new CultureInfo("ru");
-
             foreach (var item in _sharedLocalizer.GetAllStrings())
             {
                 Console.WriteLine($"Key: {item.Name}, Value: {item.Value}");
@@ -32,6 +29,7 @@ namespace SharedResources.Controllers
             Console.WriteLine($"Localized Welcome: {_sharedLocalizer["Welcome"].Value}");
 
             string message = _sharedLocalizer["Welcome"].Value;
+
             return View("Index", message);
         }
     }
