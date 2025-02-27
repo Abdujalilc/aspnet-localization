@@ -16,18 +16,30 @@ namespace SharedResources.Controllers
         }
         public IActionResult Index()
         {
-            /* for debug
-             foreach (var item in _sharedLocalizer.GetAllStrings())
+            foreach (LocalizedString item in _sharedLocalizer.GetAllStrings())
                 Console.WriteLine($"Key: {item.Name}, Value: {item.Value}");
 
-            var culture = HttpContext.Features.Get<IRequestCultureFeature>()?.RequestCulture.Culture.Name;
+            string? culture = HttpContext.Features.Get<IRequestCultureFeature>()?.RequestCulture.Culture.Name;
             Console.WriteLine($"Current Culture: {culture}");
 
             Console.WriteLine($"Localized Welcome: {_sharedLocalizer["Welcome"].Value}");
-             */            
 
             string message = _sharedLocalizer["Welcome"].Value;
             return View("Index", message);
         }
+        public IActionResult SetLanguage(string culture)
+        {
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) });
+
+            return Redirect(Request.Headers["Referer"].ToString());
+        }
+        /*
+            <a href="/Home/SetLanguage?culture=en">English</a> |
+            <a href="/Home/SetLanguage?culture=ru">Русский</a> |
+            <a href="/Home/SetLanguage?culture=de">Deutsch</a>
+         */
     }
 }

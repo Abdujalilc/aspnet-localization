@@ -14,6 +14,8 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
     options.SupportedCultures = supportedCultures;
     options.SupportedUICultures = supportedCultures;
     options.RequestCultureProviders.Insert(0, new QueryStringRequestCultureProvider());
+    // Enable culture persistence in cookies
+    options.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
 });
 
 var app = builder.Build();

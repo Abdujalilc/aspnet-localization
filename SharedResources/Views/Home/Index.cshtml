@@ -2,8 +2,15 @@
 @inject IHtmlLocalizer<Resources.SharedResource> SharedLocalizer
 @model string
 
+<h3>Change language query string</h3>
 <a href="?culture=en">English</a> |
 <a href="?culture=ru">Русский</a> |
 <a href="?culture=de">Deutsch</a>
 <h3>@Model</h3>
 <h3>@SharedLocalizer["Hello"].Value</h3>
+
+<h3>Set culture cookie</h3>
+
+<a href="/Home/SetLanguage?culture=en">English</a> |
+<a href="/Home/SetLanguage?culture=ru">Русский</a> |
+<a href="/Home/SetLanguage?culture=de">Deutsch</a>
